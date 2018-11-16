@@ -1,0 +1,8 @@
+#消息队列
+message.queue.type: rabbitmq
+## rabbit mq properties
+rabbitmq:
+  host: 192.168.160.138
+  port: 5672
+  username: guest
+  password: guest
