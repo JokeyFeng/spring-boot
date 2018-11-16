@@ -6,7 +6,10 @@
     <groupId>com.jokey.bingo</groupId>
     <artifactId>spring-boot</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <modules>
+        <module>spring-elasticsearch</module>
+    </modules>
+    <packaging>pom</packaging>
 
     <name>spring-boot</name>
     <description>学习代码 project for Spring Boot</description>
