@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: tx-manager
+server:
+  port: 7000
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+    appname: ${spring.application.name}
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:9000/eureka/
+

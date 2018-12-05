@@ -6,10 +6,15 @@
     <groupId>com.jokey.bingo</groupId>
     <artifactId>spring-boot</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <modules>
-        <module>spring-elasticsearch</module>
-    </modules>
     <packaging>pom</packaging>
+
+    <modules>
+        <module>spring-aop-websocket</module>
+        <module>spring-elasticsearch</module>
+        <module>spring-eureka</module>
+        <module>tx-lcn</module>
+        <module>spring-pay</module>
+    </modules>
 
     <name>spring-boot</name>
     <description>学习代码 project for Spring Boot</description>
@@ -18,7 +23,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.1.0.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
 
     <properties>
