@@ -1,24 +1,5 @@
 package com.jokey.bingo.common;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.utils.URIBuilder;
-import org.apache.http.entity.ContentType;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.util.EntityUtils;
-
-import java.io.IOException;
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 /**
  * @author JokeyFeng
  * date:2018/12/17
@@ -27,8 +8,8 @@ import java.util.Map;
  * comment:
  */
 public abstract class HttpClientUtil {
-    public static String doGet(String url, Map<String, String> param) {
 
+    /*public static String doGet(String url, Map<String, String> param) {
         // 创建Httpclient对象
         CloseableHttpClient httpclient = HttpClients.createDefault();
 
@@ -135,5 +116,5 @@ public abstract class HttpClientUtil {
         }
 
         return resultString;
-    }
+    }*/
 }

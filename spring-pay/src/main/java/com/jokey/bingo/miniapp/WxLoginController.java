@@ -1,6 +1,5 @@
 package com.jokey.bingo.miniapp;
 
-import com.jokey.bingo.common.HttpClientUtil;
 import com.jokey.bingo.common.JsonUtil;
 import com.jokey.bingo.common.RedisOperator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +36,7 @@ public class WxLoginController {
         param.put("js_code", code);
         param.put("grant_type", "authorization_code");
 
-        String wxResult = HttpClientUtil.doGet(url, param);
+        String wxResult = "";//HttpClientUtil.doGet(url, param);
         System.out.println(wxResult);
 
         WXSessionModel model = JsonUtil.jsonToPojo(wxResult, WXSessionModel.class);
