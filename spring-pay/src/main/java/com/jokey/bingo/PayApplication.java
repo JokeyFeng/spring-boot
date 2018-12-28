@@ -2,6 +2,7 @@ package com.jokey.bingo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 /**
  * @author JokeyFeng
@@ -10,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * package:com.jokey.bingo
  * comment:
  */
+@EnableEurekaClient
 @SpringBootApplication
 public class PayApplication {
     public static void main(String[] args) {
