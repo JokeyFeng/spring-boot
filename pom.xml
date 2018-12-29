@@ -17,6 +17,7 @@
         <module>spring-common</module>
         <module>spring-tx-demo1</module>
         <module>spring-tx-demo2</module>
+        <module>spring-gateway</module>
     </modules>
 
     <name>spring-boot</name>

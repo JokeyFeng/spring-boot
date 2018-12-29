@@ -55,9 +55,14 @@ public class RabbitMQConfig {
         return new Jackson2JsonMessageConverter();
     }
 
+    /**
+     * 必须是prototype类型
+     *
+     * @return
+     * @throws IOException
+     */
     @Bean
     @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-    //必须是prototype类型
     public RabbitTemplate rabbitTemplate() throws IOException {
         return new RabbitTemplate(connectionFactory());
     }

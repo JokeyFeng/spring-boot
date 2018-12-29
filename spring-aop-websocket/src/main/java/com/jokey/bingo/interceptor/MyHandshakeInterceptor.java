@@ -20,7 +20,7 @@ public class MyHandshakeInterceptor implements HandshakeInterceptor {
             ServletServerHttpRequest servletRequest = (ServletServerHttpRequest) request;
             HttpSession session = servletRequest.getServletRequest().getSession();
             if (session != null) {
-            //区分socket连接以定向发送消息
+                //区分socket连接以定向发送消息
                 attributes.put("user", session.getAttribute("user"));
             }
         }

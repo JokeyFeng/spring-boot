@@ -1,0 +1,21 @@
+server:
+  port: 10000
+
+spring:
+  application:
+    name: Spring-Gateway
+  cloud:
+    gateway:
+      routes:
+      - id: host_route
+        uri: http://127.0.0.1:8083
+        predicates:
+        - Path=/tx-demo1/**
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    appname: ${spring.application.name}
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka/

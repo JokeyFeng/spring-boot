@@ -6,6 +6,9 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
+/**
+ * @author yiheni
+ */
 public class RabbitMessageQueue extends AbstractMessageQueue {
 
     @Value("${rabbitmq.websocket.msg.queue}")

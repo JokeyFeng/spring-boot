@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * @author yiheni
  */
-@SpringBootApplication
-public class SpringAopWebSocketApplication {
 
+@SpringBootApplication
+public class SocketApplication {
     public static void main(String[] args) {
-        SpringApplication.run(SpringAopWebSocketApplication.class, args);
+        SpringApplication.run(SocketApplication.class, args);
     }
 }

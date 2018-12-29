@@ -3,6 +3,9 @@ package com.jokey.bingo.service;
 import com.jokey.bingo.entity.WebSocketMsgEntity;
 import org.springframework.stereotype.Service;
 
+/**
+ * @author yiheni
+ */
 @Service
 public class MessageQueueService {
 
