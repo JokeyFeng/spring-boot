@@ -40,11 +40,13 @@ tm:
   socket:
     port: 9999
     maxconnection: 100
-    compensate:
-      auto: false
-      notifyUrl: http://ip:port/path
-      tryTime: 30
-      maxWaitTime: 5000
+  compensate:
+    auto: false
+    notifyUrl: http://ip:port/path
+    tryTime: 30
+    maxWaitTime: 5000
 
 logging:
-  level: com.codingapi=debug
+  level:
+    com:
+      codingapi: debug

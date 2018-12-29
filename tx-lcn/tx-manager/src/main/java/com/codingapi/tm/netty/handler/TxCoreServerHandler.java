@@ -5,8 +5,8 @@ package com.codingapi.tm.netty.handler;
  */
 
 import com.alibaba.fastjson.JSONObject;
-import com.codingapi.tm.framework.utils.SocketManager;
-import com.codingapi.tm.framework.utils.SocketUtils;
+import com.codingapi.tm.utils.SocketManager;
+import com.codingapi.tm.utils.SocketUtils;
 import com.codingapi.tm.manager.ModelInfoManager;
 import com.codingapi.tm.netty.service.IActionService;
 import com.codingapi.tm.netty.service.NettyService;
@@ -23,38 +23,33 @@ import java.util.concurrent.Executor;
 
 /**
  * Handles a server-side channel.
+ *
+ * @author yiheni
  */
 
 @ChannelHandler.Sharable
-public class TxCoreServerHandler extends ChannelInboundHandlerAdapter { // (1)
+public class TxCoreServerHandler extends ChannelInboundHandlerAdapter {
 
     private NettyService nettyService;
 
-
     private Logger logger = LoggerFactory.getLogger(TxCoreServerHandler.class);
-
 
     private Executor threadPool;
 
 
-    public TxCoreServerHandler(Executor threadPool,NettyService nettyService) {
+    public TxCoreServerHandler(Executor threadPool, NettyService nettyService) {
         this.threadPool = threadPool;
         this.nettyService = nettyService;
     }
 
     @Override
-    public void channelRead(final ChannelHandlerContext ctx, Object msg) throws Exception {
+    public void channelRead(final ChannelHandlerContext ctx, Object msg) {
         final String json = SocketUtils.getJson(msg);
-        logger.debug("request->"+json);
-        threadPool.execute(new Runnable() {
-            @Override
-            public void run() {
-                service(json,ctx);
-            }
-        });
+        logger.debug("request->" + json);
+        threadPool.execute(() -> service(json, ctx));
     }
 
-    private void service(String json,ChannelHandlerContext ctx){
+    private void service(String json, ChannelHandlerContext ctx) {
         if (StringUtils.isNotEmpty(json)) {
             JSONObject jsonObject = JSONObject.parseObject(json);
             String action = jsonObject.getString("a");
@@ -62,22 +57,20 @@ public class TxCoreServerHandler extends ChannelInboundHandlerAdapter { // (1)
             JSONObject params = JSONObject.parseObject(jsonObject.getString("p"));
             String channelAddress = ctx.channel().remoteAddress().toString();
 
-            IActionService actionService =  nettyService.getActionService(action);
+            IActionService actionService = nettyService.getActionService(action);
 
-            String res = actionService.execute(channelAddress,key,params);
+            String res = actionService.execute(channelAddress, key, params);
 
             JSONObject resObj = new JSONObject();
             resObj.put("k", key);
             resObj.put("d", res);
 
-            SocketUtils.sendMsg(ctx,resObj.toString());
-
+            SocketUtils.sendMsg(ctx, resObj.toString());
         }
     }
 
     @Override
     public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
-
         //是否到达最大上线连接数
         if (SocketManager.getInstance().isAllowConnection()) {
             SocketManager.getInstance().addClient(ctx.channel());
@@ -99,18 +92,18 @@ public class TxCoreServerHandler extends ChannelInboundHandlerAdapter { // (1)
     }
 
     @Override
-    public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
+    public void channelReadComplete(ChannelHandlerContext ctx) {
         ctx.flush();
     }
 
     @Override
-    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
         cause.printStackTrace();
         //ctx.close();
     }
 
     @Override
-    public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
+    public void userEventTriggered(ChannelHandlerContext ctx, Object evt) {
         //心跳配置
         if (IdleStateEvent.class.isAssignableFrom(evt.getClass())) {
             IdleStateEvent event = (IdleStateEvent) evt;
@@ -119,5 +112,4 @@ public class TxCoreServerHandler extends ChannelInboundHandlerAdapter { // (1)
             }
         }
     }
-
 }

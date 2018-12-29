@@ -2,13 +2,14 @@ package com.codingapi.tm.manager.service.impl;
 
 import com.codingapi.tm.Constants;
 import com.codingapi.tm.config.ConfigReader;
-import com.codingapi.tm.framework.utils.SocketManager;
+import com.codingapi.tm.utils.SocketManager;
 import com.codingapi.tm.manager.service.MicroService;
 import com.codingapi.tm.model.TxServer;
 import com.codingapi.tm.model.TxState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.cloud.client.serviceregistry.Registration;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -23,17 +24,14 @@ import java.util.regex.Pattern;
 @Service
 public class MicroServiceImpl implements MicroService {
 
-
     @Autowired
     private RestTemplate restTemplate;
-
     @Autowired
     private ConfigReader configReader;
-
-
     @Autowired
     private DiscoveryClient discoveryClient;
-
+    @Autowired
+    private Registration registration;
 
 
     private boolean isIp(String ipAddress) {
@@ -44,12 +42,11 @@ public class MicroServiceImpl implements MicroService {
     }
 
 
-
     @Override
     public TxState getState() {
         TxState state = new TxState();
-        String ipAddress = discoveryClient.getLocalServiceInstance().getHost();
-        if(!isIp(ipAddress)){
+        String ipAddress = registration.getHost();
+        if (!this.isIp(ipAddress)) {
             ipAddress = "127.0.0.1";
         }
         state.setIp(ipAddress);
@@ -67,9 +64,9 @@ public class MicroServiceImpl implements MicroService {
         return state;
     }
 
-    private List<String> getServices(){
+    private List<String> getServices() {
         List<String> urls = new ArrayList<>();
-        List<ServiceInstance>  serviceInstances = discoveryClient.getInstances(tmKey);
+        List<ServiceInstance> serviceInstances = discoveryClient.getInstances(tmKey);
         for (ServiceInstance instanceInfo : serviceInstances) {
             urls.add(instanceInfo.getUri().toASCIIString());
         }
@@ -78,31 +75,24 @@ public class MicroServiceImpl implements MicroService {
 
     @Override
     public TxServer getServer() {
-        List<String> urls= getServices();
+        List<String> urls = getServices();
         List<TxState> states = new ArrayList<>();
-        for(String url:urls){
+        for (String url : urls) {
             try {
                 TxState state = restTemplate.getForObject(url + "/tx/manager/state", TxState.class);
                 states.add(state);
             } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
 
         }
-        if(states.size()<=1) {
-            TxState state = getState();
-            if (state.getMaxConnection() > state.getNowConnection()) {
-                return TxServer.format(state);
-            } else {
-                return null;
-            }
-        }else{
+        if (states.size() <= 1) {
+            TxState state = this.getState();
+            return state.getMaxConnection() > state.getNowConnection() ? TxServer.format(state) : null;
+        } else {
             //找默认数据
-            TxState state = getDefault(states,0);
-            if (state == null) {
-                //没有满足的默认数据
-                return null;
-            }
-            return TxServer.format(state);
+            TxState state = this.getDefault(states, 0);
+            return state == null ? null : TxServer.format(state);
         }
     }
 

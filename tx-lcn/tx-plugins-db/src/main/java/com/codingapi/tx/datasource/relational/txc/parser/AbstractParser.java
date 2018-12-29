@@ -18,7 +18,7 @@ import java.util.List;
  * @time 17/12/11.
  */
 
-public abstract class AbstractParser<T>{
+public abstract class AbstractParser<T> {
 
     public CommitInfo parse(TxcStatement txcStatement) throws SQLException {
         CommitInfo commitInfo = new CommitInfo();
@@ -36,7 +36,6 @@ public abstract class AbstractParser<T>{
         commitInfo.setSql(sql);
 
 
-
         if (txcStatement instanceof TxcPreparedStatement) {
             commitInfo.setSqlParams(((TxcPreparedStatement) txcStatement).getParamsList());
             commitInfo.setWhereParams(
@@ -52,18 +51,30 @@ public abstract class AbstractParser<T>{
         return commitInfo;
 
 
-
     }
 
     protected abstract List<Object> getWhereParams(List<Object> sqlParamsList, T parseSqlStatement);
 
     protected abstract String getWhere(T parseSqlStatement);
 
-    //从当前sql取出值
+    /**
+     * 从当前sql取出值
+     *
+     * @param parseSqlStatement
+     * @param sqlParamsList
+     * @return
+     */
     public abstract TxcTable getPresentValue(List<Object> sqlParamsList, T parseSqlStatement);
 
-    //从数据库取出值
-    public  TxcTable getOriginValue(List<Object> whereParamsList, T parseSqlStatement, Connection connection)
+    /**
+     * 从数据库取出值
+     *
+     * @param parseSqlStatement
+     * @param connection
+     * @param whereParamsList
+     * @return
+     */
+    public TxcTable getOriginValue(List<Object> whereParamsList, T parseSqlStatement, Connection connection)
             throws SQLException {
         TxcTable txcTable = new TxcTable();
         txcTable.setTableName(getTableName(parseSqlStatement));
@@ -94,7 +105,6 @@ public abstract class AbstractParser<T>{
 
 
     public abstract SQLType getSqlType();
-
 
 
 //

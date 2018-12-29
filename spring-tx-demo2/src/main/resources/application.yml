@@ -1,0 +1,40 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: Spring-TX-Demo2
+  datasource:
+    druid:
+      url: jdbc:mysql://192.168.160.142:3307/test?characterEncoding=UTF8&useSSL=false&allowMultiQueries=true
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: root
+      password: 123456
+
+logging:
+  config: classpath:logback-spring.xml
+  level:
+    com:
+      codingapi: debug
+
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    appname: ${spring.application.name}
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka/
+
+mybatis:
+  type-aliases-package: com.jokey.bingo.tx
+  mapper-locations: classpath:mapper/*.xml
+
+ribbon:
+  NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+  MaxAutoRetriesNextServer: 0
+
+#txmanager地址
+tm:
+  manager:
+    url: http://127.0.0.1:7000/tx/manager/
