@@ -7,10 +7,13 @@ spring:
   cloud:
     gateway:
       routes:
-      - id: host_route
-        uri: http://127.0.0.1:8083
+      - id: SPRING-TX-DEMO1
+        uri: lb://SPRING-TX-DEMO1
         predicates:
-        - Path=/tx-demo1/**
+        - Path=/SPRING-TX-DEMO1/**
+      discovery:
+        locator:
+          enabled: true
 eureka:
   instance:
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
@@ -19,3 +22,9 @@ eureka:
   client:
     service-url:
       defaultZone: http://127.0.0.1:8761/eureka/
+logging:
+  level:
+    org.springframework.cloud.gateway: trace
+    org.springframework.http.server.reactive: debug
+    org.springframework.web.reactive: debug
+    reactor.ipc.netty: debug
