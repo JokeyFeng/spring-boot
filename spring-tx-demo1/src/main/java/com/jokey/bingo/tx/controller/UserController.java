@@ -50,4 +50,9 @@ public class UserController {
     public int test1(@RequestBody User user) {
         return userService.test1(user);
     }
+
+    @PostMapping("/test2")
+    public int test2(@RequestPart User user) {
+        return userService.test1(user);
+    }
 }

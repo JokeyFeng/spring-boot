@@ -9,7 +9,7 @@ spring:
     name: Spring-Pay
 #  datasource:
 #    druid:
-#      url: jdbc:mysql://192.168.160.142:3307/test?characterEncoding=UTF8&useSSL=false&allowMultiQueries=true
+#      url: jdbc:mysql://192.168.160.143:3307/test?characterEncoding=UTF8&useSSL=false&allowMultiQueries=true
 #      driver-class-name: com.mysql.cj.jdbc.Driver
 #      username: root
 #      password: 123456
