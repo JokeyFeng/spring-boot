@@ -28,12 +28,12 @@ import java.io.File;
  */
 public abstract class XStreamUtils {
     private static String XML_TAG = "<?xml version='1.0' encoding='UTF-8'?>";
-    // 模板属性参数
+    /** 模板属性参数*/
     private static String PROFILE_ID = "profileId";
     private static String LOGO_ID = "logoId";
     private static String CREATE_TIME = "createTime";
     private static String MODIFY_TIME = "modifyTime";
-    // 任务属性参数
+    /** 任务属性参数*/
     private static String TASK_ID = "taskId";
     private static String TASK_DEFAULT_INFO = "taskDefaultInfo";
     private static String INPUT_ID = "inputId";

@@ -2,10 +2,12 @@ package com.jokey.bingo;
 
 import com.jokey.bingo.entity.Article;
 import com.jokey.bingo.repository.ArticleSearchRepository;
-import org.elasticsearch.common.lucene.search.function.FieldValueFactorFunction;
-import org.elasticsearch.common.lucene.search.function.FunctionScoreQuery;
-import org.elasticsearch.index.query.*;
-import org.elasticsearch.index.query.functionscore.*;
+import org.elasticsearch.index.query.BoolQueryBuilder;
+import org.elasticsearch.index.query.Operator;
+import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.index.query.functionscore.FunctionScoreQueryBuilder;
+import org.elasticsearch.index.query.functionscore.ScoreFunctionBuilder;
+import org.elasticsearch.index.query.functionscore.ScoreFunctionBuilders;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +18,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
-import org.springframework.data.elasticsearch.core.query.Query;
 import org.springframework.data.elasticsearch.core.query.SearchQuery;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -152,8 +153,9 @@ public class ArticleSearchRepositoryTest {
         Pageable pageable = PageRequest.of(0, 5);
         BoolQueryBuilder boolQueryBuilder = QueryBuilders.boolQuery().should(QueryBuilders.matchQuery("content", "教程"));
         ScoreFunctionBuilder<?> scoreFunctionBuilder = ScoreFunctionBuilders.fieldValueFactorFunction("content").factor(0.1f);
-
-        FunctionScoreQueryBuilder functionScoreQueryBuilder = QueryBuilders.functionScoreQuery(boolQueryBuilder, scoreFunctionBuilder).scoreMode(FunctionScoreQuery.ScoreMode.SUM).setMinScore(MIN_SCORE);//分值模式设置为:求和
+        //分值模式设置为:求和
+        /*FunctionScoreQueryBuilder functionScoreQueryBuilder =
+                QueryBuilders.functionScoreQuery(boolQueryBuilder, scoreFunctionBuilder).scoreMode(FunctionScoreQuery.ScoreMode.SUM).setMinScore(MIN_SCORE);
 
         SearchQuery searchQuery = new NativeSearchQueryBuilder().withPageable(pageable).withQuery(functionScoreQueryBuilder).build();
 
@@ -163,7 +165,7 @@ public class ArticleSearchRepositoryTest {
         list = searchPageResults.getContent();//结果
         for (Article article : list) {
             System.out.println(article.toString());
-        }
+        }*/
     }
 
     /**
