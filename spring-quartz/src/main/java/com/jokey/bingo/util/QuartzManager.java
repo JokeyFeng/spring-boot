@@ -14,7 +14,6 @@ package com.jokey.bingo.util;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -30,8 +29,9 @@ import java.util.Map;
  * @Date 2019/1/2
  * @Version 1.0
  */
+@Deprecated
 @Slf4j
-@Component
+//@Component
 public class QuartzManager {
 
     @Autowired

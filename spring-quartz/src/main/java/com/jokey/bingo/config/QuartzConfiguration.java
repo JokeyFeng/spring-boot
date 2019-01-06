@@ -18,9 +18,7 @@ import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import org.springframework.scheduling.quartz.SpringBeanJobFactory;
 
@@ -34,8 +32,9 @@ import javax.sql.DataSource;
  * @Date 2019/1/2
  * @Version 1.0
  */
-@Configuration
-@EnableScheduling
+@Deprecated
+//@Configuration
+//@EnableScheduling
 public class QuartzConfiguration {
     /**
      * 继承org.springframework.scheduling.quartz.SpringBeanJobFactory
@@ -110,7 +109,7 @@ public class QuartzConfiguration {
         //设置上下文spring bean name
         schedulerFactoryBean.setApplicationContextSchedulerContextKey("applicationContext");
         //设置配置文件位置
-        schedulerFactoryBean.setConfigLocation(new ClassPathResource("/quartz.properties"));
+        schedulerFactoryBean.setConfigLocation(new ClassPathResource("/quartz_bak.properties"));
         return schedulerFactoryBean;
     }
 }
