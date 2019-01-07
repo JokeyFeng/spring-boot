@@ -5,7 +5,7 @@ spring:
     name: Spring-Quartz
   datasource:
     druid:
-      url: jdbc:mysql://192.168.160.143:3307/test?characterEncoding=UTF8&useSSL=false&allowMultiQueries=true
+      url: jdbc:mysql://192.168.160.143:3307/spring-boot?characterEncoding=UTF8&useSSL=false&allowMultiQueries=true
       driver-class-name: com.mysql.jdbc.Driver
       username: root
       password: 123456
@@ -32,6 +32,15 @@ spring:
             threadPriority: 5 #线程优先级
             makeThreadsDaemons: true #配置为守护线程，设置后任务将不会执行
             threadsInheritContextClassLoaderOfInitializingThread: true #配置是否启动自动加载数据库内的定时任务，默认true
+  redis:
+    host: 192.168.160.143
+    port: 6379
+    password: 123456
+    jedis:
+      pool:
+        min-idle: 8
+        max-idle: 500
+        max-active: 2000
 
 #eureka:
 #  instance:
@@ -45,3 +54,12 @@ spring:
 mybatis:
   type-aliases-package: com.jokey.bingo
   mapper-locations: classpath:mapper/*.xml
+#通用Mapper插件配置
+mapper:
+  mappers: com.jokey.base.db.MyMapper
+  not-empty: false
+  identity: mysql
+
+#自定义配置
+bingo:
+  open-aop-log: true #是否记录操作日志

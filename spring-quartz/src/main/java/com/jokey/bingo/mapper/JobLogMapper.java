@@ -1,6 +1,6 @@
 package com.jokey.bingo.mapper;
 
-import com.jokey.base.mapper.BaseMapper;
+import com.jokey.base.db.MyMapper;
 import com.jokey.bingo.entity.JobLog;
 import org.springframework.stereotype.Component;
 
@@ -12,5 +12,5 @@ import org.springframework.stereotype.Component;
  * comment:
  */
 @Component
-public interface JobLogMapper extends BaseMapper<JobLog> {
+public interface JobLogMapper extends MyMapper<JobLog> {
 }

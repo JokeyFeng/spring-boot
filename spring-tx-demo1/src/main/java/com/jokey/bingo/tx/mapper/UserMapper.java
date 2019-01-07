@@ -12,9 +12,9 @@
 package com.jokey.bingo.tx.mapper;
 
 import com.jokey.base.entity.User;
+import com.jokey.base.db.MyMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
-import tk.mybatis.mapper.common.BaseMapper;
 
 /**
  * @Project spring-boot
@@ -26,6 +26,6 @@ import tk.mybatis.mapper.common.BaseMapper;
  */
 @Component
 @Mapper
-public interface UserMapper extends BaseMapper<User> {
+public interface UserMapper extends MyMapper<User> {
 
 }

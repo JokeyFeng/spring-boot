@@ -1,18 +1,16 @@
 package com.jokey.bingo.aspect;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
 import com.jokey.base.annotation.Log;
 import com.jokey.base.properties.BingoProperties;
+import com.jokey.base.util.AddressUtils;
 import com.jokey.base.util.HttpServletUtils;
 import com.jokey.base.util.IpUtils;
 import com.jokey.bingo.entity.SysLog;
-import com.jokey.bingo.service.JobLogService;
 import com.jokey.bingo.service.SysLogService;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
@@ -107,10 +105,12 @@ public class LogAspect {
         }
         //设置IP地址
         sysLog.setIp(ip);
-        //todo sysLog.setUsername("");
+        //todo sysLog.setUsername("")
         sysLog.setTime(time);
         sysLog.setCreateTime(new Date());
-        sysLog.setLocation();
+        sysLog.setLocation(AddressUtils.getCityInfo(sysLog.getIp()));
+        //保存日志
+        this.sysLogService.save(sysLog);
 
     }
 
@@ -144,8 +144,6 @@ public class LogAspect {
                 }
             }
         }
-
         return builder;
-
     }
 }

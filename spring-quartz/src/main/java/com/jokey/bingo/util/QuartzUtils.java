@@ -110,7 +110,8 @@ public abstract class QuartzUtils {
             TriggerKey triggerKey = getTriggerKey(scheduleJob.getJobId());
 
             //表达式调度构建器
-            CronScheduleBuilder cronBuilder = CronScheduleBuilder.cronSchedule(scheduleJob.getCronExpression()).withMisfireHandlingInstructionDoNothing();
+            CronScheduleBuilder cronBuilder =
+                    CronScheduleBuilder.cronSchedule(scheduleJob.getCronExpression()).withMisfireHandlingInstructionDoNothing();
             CronTrigger trigger = getCronTrigger(scheduler, scheduleJob.getJobId());
 
             if (trigger == null) {

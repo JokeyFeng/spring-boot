@@ -11,8 +11,9 @@ import org.springframework.context.annotation.Configuration;
  * comment:
  */
 @Configuration
-@ConfigurationProperties(prefix = "Bingo")
+@ConfigurationProperties(prefix = "bingo")
 public class BingoProperties {
+
     private boolean openAopLog = true;
 
     public boolean isOpenAopLog() {

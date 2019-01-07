@@ -7,7 +7,7 @@ spring:
     static-locations: classpath:/static/
 
   redis:
-    host: 192.168.160.142
+    host: 192.168.160.143
     port: 6379
     password: 123456
     jedis:

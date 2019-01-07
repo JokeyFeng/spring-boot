@@ -1,4 +1,4 @@
-package com.jokey.base;
+package com.jokey.base.db;
 
 /**
  * @author JokeyFeng
@@ -28,7 +28,7 @@ public class DataBlock {
      *
      * @param city_id
      * @param region  region string
-     * @param ptr     data ptr
+     * @param dataPtr     data ptr
      */
     public DataBlock(int city_id, String region, int dataPtr) {
         this.city_id = city_id;

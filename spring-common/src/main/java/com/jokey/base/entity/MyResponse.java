@@ -38,7 +38,7 @@ public class MyResponse extends HashMap<String, Object> {
 
     private MyResponse() {
         put("code", SUCCESS);
-        put("msp", "操作成功");
+        put("msg", "操作成功");
     }
 
     public static MyResponse error(Object msg) {

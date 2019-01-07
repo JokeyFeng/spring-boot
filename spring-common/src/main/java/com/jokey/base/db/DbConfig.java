@@ -1,4 +1,4 @@
-package com.jokey.base;
+package com.jokey.base.db;
 
 /**
  * @author JokeyFeng

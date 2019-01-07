@@ -1,11 +1,14 @@
 package com.jokey.bingo.service.impl;
 
 import com.google.common.collect.Lists;
+import com.jokey.base.db.MyMapper;
 import com.jokey.base.service.impl.BaseServiceImpl;
 import com.jokey.bingo.entity.JobLog;
+import com.jokey.bingo.mapper.JobLogMapper;
 import com.jokey.bingo.service.JobLogService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,6 +28,14 @@ import java.util.List;
 @Service("JobLogService")
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true, rollbackFor = Exception.class)
 public class JobLogServiceImpl extends BaseServiceImpl<JobLog> implements JobLogService {
+
+    @Autowired
+    private JobLogMapper jobLogMapper;
+
+    @Override
+    protected MyMapper<JobLog> getMapper() {
+        return jobLogMapper;
+    }
 
     @Override
     public List<JobLog> findAllJobLogs(JobLog jobLog) {

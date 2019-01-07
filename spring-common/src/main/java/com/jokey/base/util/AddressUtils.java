@@ -1,12 +1,15 @@
 package com.jokey.base.util;
 
-import com.jokey.base.DataBlock;
-import com.jokey.base.DbConfig;
+import com.jokey.base.db.DataBlock;
+import com.jokey.base.db.DbConfig;
+import com.jokey.base.db.DbSearcher;
+import com.jokey.base.db.Util;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
 import java.io.File;
+import java.lang.reflect.Method;
 
 /**
  * @author JokeyFeng
@@ -28,7 +31,7 @@ public abstract class AddressUtils {
             int algorithm = DbSearcher.BTREE_ALGORITHM;
             DbConfig config = new DbConfig();
             DbSearcher searcher = new DbSearcher(config, file.getPath());
-            Method method = null;
+            Method method;
             switch (algorithm) {
                 case DbSearcher.BTREE_ALGORITHM:
                     method = searcher.getClass().getMethod("btreeSearch", String.class);

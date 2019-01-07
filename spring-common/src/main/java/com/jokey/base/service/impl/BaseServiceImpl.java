@@ -1,10 +1,9 @@
 package com.jokey.base.service.impl;
 
+import com.jokey.base.db.MyMapper;
 import com.jokey.base.service.BaseService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import tk.mybatis.mapper.common.Mapper;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
@@ -19,33 +18,33 @@ import java.util.List;
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true, rollbackFor = Exception.class)
 public abstract class BaseServiceImpl<T> implements BaseService<T> {
 
-    @Autowired
-    protected Mapper<T> mapper;
-
-    public Mapper<T> getMapper() {
-        return this.mapper;
-    }
+    /**
+     * 实例化
+     *
+     * @return
+     */
+    protected abstract MyMapper<T> getMapper();
 
     @Override
     public List<T> selectAll() {
-        return this.mapper.selectAll();
+        return getMapper().selectAll();
     }
 
     @Override
     public T selectByKey(Object key) {
-        return this.mapper.selectByPrimaryKey(key);
+        return getMapper().selectByPrimaryKey(key);
     }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
     public int save(T entity) {
-        return this.mapper.insert(entity);
+        return getMapper().insert(entity);
     }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
     public int delete(Object key) {
-        return this.mapper.deleteByPrimaryKey(key);
+        return getMapper().deleteByPrimaryKey(key);
     }
 
     @Override
@@ -53,23 +52,23 @@ public abstract class BaseServiceImpl<T> implements BaseService<T> {
     public int batchDelete(List<String> list, String property, Class<T> clazz) {
         Example example = new Example(clazz);
         example.createCriteria().andIn(property, list);
-        return this.mapper.deleteByExample(example);
+        return getMapper().deleteByExample(example);
     }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
     public int updateAll(T entity) {
-        return this.mapper.updateByPrimaryKey(entity);
+        return getMapper().updateByPrimaryKey(entity);
     }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
     public int updateNotNull(T entity) {
-        return this.mapper.updateByPrimaryKeySelective(entity);
+        return getMapper().updateByPrimaryKeySelective(entity);
     }
 
     @Override
     public List<T> selectByExample(Object example) {
-        return this.mapper.selectByExample(example);
+        return getMapper().selectByExample(example);
     }
 }

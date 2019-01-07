@@ -7,7 +7,6 @@ import com.jokey.bingo.service.JobLogService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.quartz.JobExecutionContext;
-import org.quartz.JobExecutionException;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 
 import java.util.Date;
@@ -28,10 +27,11 @@ public class QuartzJob extends QuartzJobBean {
     private ExecutorService executor = Executors.newSingleThreadExecutor();
 
     @Override
-    protected void executeInternal(JobExecutionContext context) throws JobExecutionException {
+    protected void executeInternal(JobExecutionContext context) {
 
         Job job = (Job) context.getMergedJobDataMap().get(Job.JOB_PARAM_KEY);
         //获取spring Bean
+        System.out.println(SpringContextUtils.containsBean("JobLogService"));
         JobLogService jobLogService = (JobLogService) SpringContextUtils.getBean("JobLogService");
 
         //构建日志对象

@@ -9,7 +9,7 @@
  * </html>
  */
 
-package com.jokey.base.mapper;
+package com.jokey.base.db;
 
 import tk.mybatis.mapper.common.Mapper;
 import tk.mybatis.mapper.common.MySqlMapper;
@@ -17,11 +17,10 @@ import tk.mybatis.mapper.common.MySqlMapper;
 /**
  * @Project spring-boot
  * @Package com.jokey.base.mapper
- * @ClassName BaseMapper
+ * @ClassName MyMapper
  * @Author JokeyZheng
  * @Date 2018/12/28
  * @Version 1.0
  */
-
-public interface BaseMapper<T> extends Mapper<T>, MySqlMapper<T> {
+public interface MyMapper<T> extends Mapper<T>, MySqlMapper<T> {
 }
