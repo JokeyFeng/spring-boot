@@ -63,3 +63,9 @@ mapper:
 #自定义配置
 bingo:
   open-aop-log: true #是否记录操作日志
+logging:
+  level:
+    com:
+      jokey:
+        bingo:
+          mapper: debug

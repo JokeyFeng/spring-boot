@@ -78,13 +78,16 @@ public abstract class QuartzUtils {
     public static void createScheduleJob(Scheduler scheduler, Job scheduleJob) {
         try {
             //构建job信息
-            JobDetail jobDetail = JobBuilder.newJob(QuartzJob.class).withIdentity(getJobKey(scheduleJob.getJobId())).build();
+            JobDetail jobDetail =
+                    JobBuilder.newJob(QuartzJob.class).withIdentity(getJobKey(scheduleJob.getJobId())).build();
 
             //表达式调度构建器
-            CronScheduleBuilder cronBuilder = CronScheduleBuilder.cronSchedule(scheduleJob.getCronExpression()).withMisfireHandlingInstructionDoNothing();
+            CronScheduleBuilder cronBuilder =
+                    CronScheduleBuilder.cronSchedule(scheduleJob.getCronExpression()).withMisfireHandlingInstructionDoNothing();
 
             //按照新的cronExpression表达式构建一个新的trigger
-            CronTrigger trigger = TriggerBuilder.newTrigger().withIdentity(getTriggerKey(scheduleJob.getJobId())).withSchedule(cronBuilder).build();
+            CronTrigger trigger =
+                    TriggerBuilder.newTrigger().withIdentity(getTriggerKey(scheduleJob.getJobId())).withSchedule(cronBuilder).build();
 
             //放入参数，运行时的方法获取
             jobDetail.getJobDataMap().put(Job.JOB_PARAM_KEY, scheduleJob);
@@ -141,7 +144,6 @@ public abstract class QuartzUtils {
      * @param scheduleJob
      */
     public static void run(Scheduler scheduler, Job scheduleJob) {
-
         try {
             //设置参数
             JobDataMap dataMap = new JobDataMap();

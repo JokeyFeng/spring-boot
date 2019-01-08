@@ -31,7 +31,6 @@ public class QuartzJob extends QuartzJobBean {
 
         Job job = (Job) context.getMergedJobDataMap().get(Job.JOB_PARAM_KEY);
         //获取spring Bean
-        System.out.println(SpringContextUtils.containsBean("JobLogService"));
         JobLogService jobLogService = (JobLogService) SpringContextUtils.getBean("JobLogService");
 
         //构建日志对象

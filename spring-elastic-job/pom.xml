@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>spring-boot</artifactId>
+        <groupId>com.jokey.bingo</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>spring-elastic-job</artifactId>
+    <description>
+        集成Elastic-job实现定时作业弹性分发。
+        Quartz的集群方案具备HA功能，可以实现定时任务的分发，
+        但是通过增加机器节点数量的方式并不能提高每次定时任务的执行效率，无法实现任务的弹性分片
+    </description>
+
+    <properties>
+        <elastic-job.version>2.1.5</elastic-job.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.dangdang</groupId>
+            <artifactId>elastic-job-lite-core</artifactId>
+            <version>${elastic-job.version}</version>
+        </dependency>
+        <!-- elastic-job-lite-spring -->
+        <dependency>
+            <groupId>com.dangdang</groupId>
+            <artifactId>elastic-job-lite-spring</artifactId>
+            <version>${elastic-job.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>${druid.starter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>${mybatis.starter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-client</artifactId>
+            <version>4.1.0</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
