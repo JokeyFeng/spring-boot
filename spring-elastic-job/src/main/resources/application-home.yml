@@ -1,0 +1,25 @@
+server:
+  port: 8086
+
+
+regCenter:
+  serverList: 192.168.12.149:2181
+  namespace: Spring-Elastic-Job
+
+stockJob:
+  cron: 0/10 * * * * ?
+  shardingTotalCount: 2
+  shardingItemParameters: 0=0,1=1
+
+spring:
+  application:
+    name: Spring-Elastic-Job
+  datasource:
+    druid:
+      url: jdbc:mysql://192.168.12.149:3306/spring-boot?characterEncoding=UTF8&useSSL=false&allowMultiQueries=true
+      driver-class-name: com.mysql.jdbc.Driver
+      username: root
+      password: 123456
+
+logging:
+  config: classpath:logback-spring.xml

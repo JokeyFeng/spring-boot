@@ -36,6 +36,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class ElasticJobConfig {
+
     @Autowired
     private ZookeeperRegistryCenter regCenter;
 
