@@ -24,6 +24,7 @@ spring:
             driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate #持久化方式配置数据驱动，MySQL数据库
             tablePrefix: QRTZ_ #quartz相关数据表前缀名
             isClustered: true #开启分布式部署
+            acquireTriggersWithinLock: true #加锁，不会同时存在多个线程拉取到相同的trigger，避免的重复调度的危险。
             useProperties: false #配置是否使用
             clusterCheckinInterval: 20000 #分布式节点有效性检查时间间隔，单位：毫秒
           threadPool:

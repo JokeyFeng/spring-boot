@@ -21,6 +21,7 @@ spring:
             instanceId: AUTO #调度器实例编号自动生成
           jobStore:
             class: org.quartz.impl.jdbcjobstore.JobStoreTX #持久化方式配置
+            acquireTriggersWithinLock: true #加锁，不会同时存在多个线程拉取到相同的trigger，避免的重复调度的危险。
             driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate #持久化方式配置数据驱动，MySQL数据库
             tablePrefix: QRTZ_ #quartz相关数据表前缀名
             isClustered: true #开启分布式部署

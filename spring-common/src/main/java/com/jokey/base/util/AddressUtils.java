@@ -5,6 +5,7 @@ import com.jokey.base.db.DbConfig;
 import com.jokey.base.db.DbSearcher;
 import com.jokey.base.db.Util;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
@@ -56,5 +57,21 @@ public abstract class AddressUtils {
             log.error("获取地址信息异常：{}", e);
         }
         return "";
+    }
+
+    /**
+     * 获取访问来源的省份城市
+     *
+     * @param ip
+     * @return
+     */
+    public static String getCityFromIp(String ip) {
+        String cityInfo = getCityInfo(ip);
+        if (StringUtils.isBlank(cityInfo)
+                || cityInfo.contains("内网")) {
+            return "广东省-广州市";
+        }
+        String[] info = cityInfo.split("\\|");
+        return info[2] + "-" + info[3];
     }
 }

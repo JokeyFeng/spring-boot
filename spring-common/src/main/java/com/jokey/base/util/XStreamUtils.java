@@ -128,7 +128,7 @@ public abstract class XStreamUtils {
 //        overLookParam(xStream);
         xStream.processAnnotations(clazz);
         // 剔除所有tab、制表符、换行符
-//        String xml = xStream.toXML(object).replaceAll("\\s+", " ");
+//        String xml = xStream.toXML(object).replaceAll("\\s+", " ")
         return xStream.toXML(object);
     }
 
