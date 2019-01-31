@@ -20,6 +20,7 @@
         <module>spring-gateway</module>
         <module>spring-quartz</module>
         <module>spring-elastic-job</module>
+        <module>spring-ldap</module>
     </modules>
 
     <name>spring-boot</name>

@@ -1,0 +1,9 @@
+spring:
+  profiles:
+    active: home
+  ldap:
+    urls:
+    password:
+    username:
+    anonymous-read-only: false
+    base:

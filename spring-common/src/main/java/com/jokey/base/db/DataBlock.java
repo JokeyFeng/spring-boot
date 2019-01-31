@@ -28,7 +28,7 @@ public class DataBlock {
      *
      * @param city_id
      * @param region  region string
-     * @param dataPtr     data ptr
+     * @param dataPtr data ptr
      */
     public DataBlock(int city_id, String region, int dataPtr) {
         this.city_id = city_id;
@@ -69,9 +69,6 @@ public class DataBlock {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-
-        sb.append(city_id).append('|').append(region).append('|').append(dataPtr);
-        return sb.toString();
+        return String.valueOf(city_id) + '|' + region + '|' + dataPtr;
     }
 }
