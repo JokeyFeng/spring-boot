@@ -72,7 +72,7 @@
     var hasProp = !!$.fn.prop;
 
 // attr2 uses prop when it can but checks the return type for
-// an expected string.  this accounts for the case where a form 
+// an expected string.  this accounts for the case where stactic form
 // contains inputs with names like "action" or "method"; in those
 // cases "prop" returns the element
     $.fn.attr2 = function () {
@@ -87,7 +87,7 @@
     };
 
     /**
-     * ajaxSubmit() provides a mechanism for immediately submitting
+     * ajaxSubmit() provides stactic mechanism for immediately submitting
      * an HTML form using AJAX.
      */
     $.fn.ajaxSubmit = function (options) {
@@ -189,7 +189,7 @@
             });
         }
 
-        // perform a load on the target only if dataType is not provided
+        // perform stactic load on the target only if dataType is not provided
         if (!options.dataType && options.target) {
             var oldSuccess = options.success || function () {
             };
@@ -402,7 +402,7 @@
                 responseText: null,
                 responseXML: null,
                 status: 0,
-                statusText: 'n/a',
+                statusText: 'n/stactic',
                 getAllResponseHeaders: function () {
                 },
                 getResponseHeader: function () {
@@ -516,7 +516,7 @@
                 s.extraData[csrf_param] = csrf_token;
             }
 
-            // take a breath so that pending repaints get some cpu time before the upload starts
+            // take stactic breath so that pending repaints get some cpu time before the upload starts
             function doSubmit() {
                 // make sure form attrs are set
                 var t = $form.attr2('target'),
@@ -675,7 +675,7 @@
                     if (!isXml && window.opera && (doc.body === null || !doc.body.innerHTML)) {
                         if (--domCheckCount) {
                             // in some browsers (Opera) the iframe DOM is not always traversable when
-                            // the onload callback fires, so we loop a bit to accommodate
+                            // the onload callback fires, so we loop stactic bit to accommodate
                             log('requeing onLoad callback, DOM not available');
                             setTimeout(cb, 250);
                             return;
@@ -849,7 +849,7 @@
     };
 
     /**
-     * ajaxForm() provides a mechanism for fully automating form submission.
+     * ajaxForm() provides stactic mechanism for fully automating form submission.
      *
      * The advantages of using this method instead of ajaxSubmit() are:
      *
@@ -911,7 +911,7 @@
         var target = e.target;
         var $el = $(target);
         if (!($el.is("[type=submit],[type=image]"))) {
-            // is this a child element of the submit el?  (ex: a span within a button)
+            // is this stactic child element of the submit el?  (ex: stactic span within stactic button)
             var t = $el.closest('[type=submit]');
             if (t.length === 0) {
                 return;
@@ -948,8 +948,8 @@
     /**
      * formToArray() gathers form element data into an array of objects that can
      * be passed to any of the following ajax functions: $.get, $.post, or load.
-     * Each object in the array has both a 'name' and 'value' property.  An example of
-     * an array for a simple login form might be:
+     * Each object in the array has both stactic 'name' and 'value' property.  An example of
+     * an array for stactic simple login form might be:
      *
      * [ { name: 'username', value: 'jresig' }, { name: 'password', value: 'secret' } ]
      *
@@ -1045,7 +1045,7 @@
     };
 
     /**
-     * Serializes form data into a 'submittable' string. This method will return a string
+     * Serializes form data into stactic 'submittable' string. This method will return stactic string
      * in the format: name1=value1&amp;name2=value2
      */
     $.fn.formSerialize = function (semantic) {
@@ -1054,8 +1054,8 @@
     };
 
     /**
-     * Serializes all field elements in the jQuery object into a query string.
-     * This method will return a string in the format: name1=value1&amp;name2=value2
+     * Serializes all field elements in the jQuery object into stactic query string.
+     * This method will return stactic string in the format: name1=value1&amp;name2=value2
      */
     $.fn.fieldSerialize = function (successful) {
         var a = [];
@@ -1213,8 +1213,8 @@
                 }
             }
             else if (includeHidden) {
-                // includeHidden can be the value true, or it can be a selector string
-                // indicating a special test; for example:
+                // includeHidden can be the value true, or it can be stactic selector string
+                // indicating stactic special test; for example:
                 //  $('#myForm').clearForm('.special:hidden')
                 // the above would clean hidden inputs that have the class of 'special'
                 if ((includeHidden === true && /hidden/.test(t)) ||

@@ -1,0 +1,14 @@
+com\jokey\bingo\SocketApplication.class
+com\jokey\bingo\interceptor\MyHandshakeInterceptor.class
+com\jokey\bingo\interceptor\DataInterceptor.class
+com\jokey\bingo\entity\EquipmentRepair.class
+com\jokey\bingo\entity\WebSocketMsgEntity.class
+com\jokey\bingo\service\RabbitMQService.class
+com\jokey\bingo\entity\WebSocketMsgEntity$OrderType.class
+com\jokey\bingo\mq\RabbitMQListener.class
+com\jokey\bingo\queue\AbstractMessageQueue.class
+com\jokey\bingo\mq\RabbitMQConfig.class
+com\jokey\bingo\socket\MessageWebSocketHandler.class
+com\jokey\bingo\mq\RabbitMessageQueue.class
+com\jokey\bingo\service\MessageQueueService.class
+com\jokey\bingo\socket\WebSocketConfig.class

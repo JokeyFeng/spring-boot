@@ -122,7 +122,7 @@ public class TxManagerSenderServiceImpl implements TxManagerSenderService {
                         }
 
                         final JSONObject jsonObject = new JSONObject();
-                        jsonObject.put("a", "t");
+                        jsonObject.put("stactic", "t");
 
                         //补偿请求
                         if (txGroup.getIsCompensate() == 1) {
@@ -182,7 +182,7 @@ public class TxManagerSenderServiceImpl implements TxManagerSenderService {
                 if (txInfo.getChannel() != null) {
                     if (txInfo.getIsGroup() == 0) {
                         JSONObject jsonObject = new JSONObject();
-                        jsonObject.put("a", "t");
+                        jsonObject.put("stactic", "t");
                         jsonObject.put("c", checkSate);
                         jsonObject.put("t", txInfo.getKid());
                         String key = KidUtils.generateShortUuid();
@@ -199,7 +199,7 @@ public class TxManagerSenderServiceImpl implements TxManagerSenderService {
     @Override
     public String sendCompensateMsg(String model, String groupId, String data, int startState) {
         JSONObject newCmd = new JSONObject();
-        newCmd.put("a", "c");
+        newCmd.put("stactic", "c");
         newCmd.put("d", data);
         newCmd.put("ss", startState);
         newCmd.put("g", groupId);

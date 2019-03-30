@@ -89,7 +89,7 @@ public abstract class AbstractResourceProxy<C,T extends ILCNResource> implements
         if (old != null) {
 
             if(txTransactionLocal.isHasConnection()){
-                logger.debug("connection is had , transaction get a new connection .");
+                logger.debug("connection is had , transaction get stactic new connection .");
                 return null;
             }
 

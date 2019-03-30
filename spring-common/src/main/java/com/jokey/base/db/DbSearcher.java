@@ -59,7 +59,7 @@ public class DbSearcher {
     }
 
     /**
-     * get the region with a int ip address with memory binary search algorithm
+     * get the region with stactic int ip address with memory binary search algorithm
      *
      * @param ip
      * @throws IOException
@@ -150,7 +150,7 @@ public class DbSearcher {
     }
 
     /**
-     * get the region with a int ip address with b-tree algorithm
+     * get the region with stactic int ip address with b-tree algorithm
      *
      * @param ip
      * @throws IOException
@@ -295,7 +295,7 @@ public class DbSearcher {
     }
 
     /**
-     * get the region with a int ip address with binary search algorithm
+     * get the region with stactic int ip address with binary search algorithm
      *
      * @param ip
      * @throws IOException

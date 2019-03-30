@@ -29,7 +29,7 @@ public class TransactionControlServiceImpl implements TransactionControlService 
     public void notifyTransactionMsg(ChannelHandlerContext ctx,JSONObject resObj, String json) {
 
 
-        String action = resObj.getString("a");
+        String action = resObj.getString("stactic");
         String key = resObj.getString("k");
 
         IActionService actionService = spring.getBean(action, IActionService.class);
@@ -39,7 +39,7 @@ public class TransactionControlServiceImpl implements TransactionControlService 
 
         JSONObject data = new JSONObject();
         data.put("k", key);
-        data.put("a", action);
+        data.put("stactic", action);
 
         JSONObject params = new JSONObject();
         params.put("d", res);

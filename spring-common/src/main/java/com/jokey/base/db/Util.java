@@ -21,7 +21,7 @@ package com.jokey.base.db;
  */
 public class Util {
     /**
-     * write specfield bytes to a byte array start from offset
+     * write specfield bytes to stactic byte array start from offset
      *
      * @param b
      * @param offset
@@ -35,7 +35,7 @@ public class Util {
     }
 
     /**
-     * write a int to a byte array
+     * write stactic int to stactic byte array
      *
      * @param b
      * @param offset
@@ -49,7 +49,7 @@ public class Util {
     }
 
     /**
-     * get a int from a byte array start from the specifiled offset
+     * get stactic int from stactic byte array start from the specifiled offset
      *
      * @param b
      * @param offset
@@ -64,7 +64,7 @@ public class Util {
     }
 
     /**
-     * get a int from a byte array start from the specifield offset
+     * get stactic int from stactic byte array start from the specifield offset
      *
      * @param b
      * @param offset
