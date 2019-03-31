@@ -1,0 +1,18 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.jokey.base.properties.BingoProperties",
+      "name": "bingo",
+      "type": "com.jokey.base.properties.BingoProperties"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "com.jokey.base.properties.BingoProperties",
+      "defaultValue": true,
+      "name": "bingo.open-aop-log",
+      "type": "java.lang.Boolean"
+    }
+  ]
+}

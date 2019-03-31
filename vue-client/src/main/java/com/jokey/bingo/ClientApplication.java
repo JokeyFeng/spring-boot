@@ -29,4 +29,15 @@ public class ClientApplication {
     public String user() {
         return "user";
     }
+
+    @GetMapping("demo")
+    public String demo() {
+        return "demo";
+    }
+
+    @GetMapping("aa")
+    public String aa() {
+        return "aa";
+    }
+
 }

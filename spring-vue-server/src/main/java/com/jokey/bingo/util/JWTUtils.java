@@ -48,18 +48,20 @@ public class JWTUtils {
 
     /**
      * 获取Token
+     *
      * @param uid 用户ID
      * @param exp 失效时间，单位分钟
      * @return
      */
     public static String getToken(String uid, int exp) {
-        long endTime = System.currentTimeMillis() + 1000 * 60 * exp;
+        long endTime = System.currentTimeMillis() + 1000 * exp;
         return Jwts.builder().setSubject(uid).setExpiration(new Date(endTime))
                 .signWith(SignatureAlgorithm.RS512, priKey).compact();
     }
 
     /**
      * 获取Token
+     *
      * @param uid 用户ID
      * @return
      */
@@ -71,6 +73,7 @@ public class JWTUtils {
 
     /**
      * 检查Token是否合法
+     *
      * @param token
      * @return JWTResult
      */

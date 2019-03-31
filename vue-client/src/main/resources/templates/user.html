@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<div id="app" class="table">
+<div id="app">
     <table>
         <tr>
             <td>ID</td>
@@ -19,11 +19,14 @@
             <td>操作</td>
         </tr>
         <tbody>
-        <tr v-for="u in user">
+        <tr v-for="(u) in user">
             <td>{{u.id}}</td>
             <td>{{u.name}}</td>
             <td>{{u.age}}</td>
-            <td><a href="remove">删除</a></td>
+            <!-- <td><a href="#" @onclick="update(u)">修改</a>|<a href="#" @onclick="remove(u.id)">删除</a></td>-->
+            <td :class="'text-center'">
+                <button @click="remove(u.id)">删除</button>
+            </td>
         </tr>
         </tbody>
     </table>
@@ -40,15 +43,43 @@
         密码:<input v-model="password"><br>
         <button @click="login">登录</button>
     </div>
+
+    <div>
+        <button @click="getData">查询</button>
+    </div>
 </div>
 
 <script type="text/javascript">
     axios.defaults.baseURL = 'http://127.0.0.1:8890';
-    axios.defaults.headers.common['Authorization'] = localStorage.getItem("token");
+    // axios.defaults.headers.common['authorization'] = localStorage.getItem("token");
+
+    // 添加请求拦截器
+    axios.interceptors.request.use(function (config) {
+        // 在发送请求之前做些什么
+        console.log(config);
+        if (config.method !== 'OPTIONS') {
+            config.headers.Authorization = localStorage.getItem("token");
+        }
+        return config;
+    }, function (error) {
+        // 对请求错误做些什么
+        return Promise.reject(error);
+    });
+
+    // 添加响应拦截器
+    /*axios.interceptors.response.use(function (response) {
+        // 对响应数据做点什么
+        console.log(response);
+        return response;
+    }, function (error) {
+        // 对响应错误做点什么
+        return Promise.reject(error);
+    });*/
+
     var app = new Vue({
         el: "#app",
         data: {
-            user: [{"id": 1, "name": "yinjihuan", "age": 20}],
+            user: [{"id": 1, "name": "zhengjingfeng", "age": 20}],
             name: "",
             age: 0,
             pass: "",
@@ -65,6 +96,32 @@
                         that.user = response.data;
                     })
                     .catch(function (error) {
+                        alert(error);
+                        console.log(error);
+                    });
+
+            },
+            getData: function () {
+                // 为给定 ID 的 user 创建请求
+                axios.get('/user/get')
+                    .then(function (response) {
+                        alert(response);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+
+            },
+            remove: function (id) {
+                // 为给定 ID 的 user 创建请求
+                if (!confirm('是否删除')) {
+                    return;
+                }
+                axios.delete('/user/remove?id=' + id)
+                    .then(function (response) {
+                        alert(response);
+                    })
+                    .catch(function (error) {
                         console.log(error);
                     });
 
@@ -78,6 +135,7 @@
                 }).then(function (response) {
                     alert(response.data);
                 }).catch(function (error) {
+                    alert(error);
                     console.log(error);
                 });
             },
@@ -90,6 +148,7 @@
                     //存储在本地
                     localStorage.setItem("token", response.data.token);
                 }).catch(function (error) {
+                    alert(error);
                     console.log(error);
                 });
             }

@@ -1,0 +1,72 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: Spring-Quartz
+  datasource:
+    druid:
+      url: jdbc:mysql://192.168.160.143:3307/spring-boot?characterEncoding=UTF8&useSSL=false&allowMultiQueries=true
+      driver-class-name: com.mysql.jdbc.Driver
+      username: root
+      password: 123456
+  quartz:
+    job-store-type: jdbc #设置任务的数据持久化方式，默认是内存方式
+    jdbc:
+      initialize-schema: never #初始化表结构
+    properties:
+      org:
+        quartz:
+          scheduler:
+            instanceName: QuartzScheduler #调度器实例名称
+            instanceId: AUTO #调度器实例编号自动生成
+          jobStore:
+            class: org.quartz.impl.jdbcjobstore.JobStoreTX #持久化方式配置
+            acquireTriggersWithinLock: true #加锁，不会同时存在多个线程拉取到相同的trigger，避免的重复调度的危险。
+            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate #持久化方式配置数据驱动，MySQL数据库
+            tablePrefix: QRTZ_ #quartz相关数据表前缀名
+            isClustered: true #开启分布式部署
+            useProperties: false #配置是否使用
+            clusterCheckinInterval: 20000 #分布式节点有效性检查时间间隔，单位：毫秒
+          threadPool:
+            class: org.quartz.simpl.SimpleThreadPool #线程池的实现类
+            threadCount: 10 #执行最大并发线程数量
+            threadPriority: 5 #线程优先级
+            makeThreadsDaemons: true #配置为守护线程，设置后任务将不会执行
+            threadsInheritContextClassLoaderOfInitializingThread: true #配置是否启动自动加载数据库内的定时任务，默认true
+  redis:
+    host: 192.168.160.143
+    port: 6379
+    password: 123456
+    jedis:
+      pool:
+        min-idle: 8
+        max-idle: 500
+        max-active: 2000
+
+#eureka:
+#  instance:
+#    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+#    appname: ${spring.application.name}
+#    prefer-ip-address: true
+#  client:
+#    service-url:
+#      defaultZone: http://127.0.0.1:8761/eureka/
+
+mybatis:
+  type-aliases-package: com.jokey.bingo
+  mapper-locations: classpath:mapper/*.xml
+#通用Mapper插件配置
+mapper:
+  mappers: com.jokey.base.db.MyMapper
+  not-empty: false
+  identity: mysql
+
+#自定义配置
+bingo:
+  open-aop-log: true #是否记录操作日志
+logging:
+  level:
+    com:
+      jokey:
+        bingo:
+          mapper: debug

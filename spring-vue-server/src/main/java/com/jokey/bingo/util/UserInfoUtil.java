@@ -15,7 +15,7 @@ public class UserInfoUtil {
 
     public static String getLoginUserId(HttpServletRequest request) {
 
-        String authorization = request.getHeader("Authorization");
+        String authorization = request.getHeader("authorization");
         if (StringUtils.hasText(authorization)) {
             JWTUtils.JWTResult jwtResult = JWTUtils.getInstance().checkToken(authorization);
             if (jwtResult.isStatus()) {

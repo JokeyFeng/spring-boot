@@ -1,15 +1,18 @@
 package com.jokey.bingo.controller;
 
-import com.jokey.bingo.util.JWTUtils;
+import com.jokey.bingo.auth.EnableAuth;
 import com.jokey.bingo.entity.LoginParam;
+import com.jokey.bingo.entity.ResponseData;
 import com.jokey.bingo.entity.User;
 import com.jokey.bingo.service.UserService;
+import com.jokey.bingo.util.JWTUtils;
 import com.jokey.bingo.util.UserInfoUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -26,45 +29,48 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @EnableAuth
     @PostMapping("/save")
-    public Object save(@RequestBody User user) {
+    public ResponseData<String> save(@RequestBody User user) {
         user.setStatus(true);
         userService.save(user);
-        return true;
+        return new ResponseData<>("保存成功");
     }
 
+    @EnableAuth
     @GetMapping("/get")
-    public Object get() {
-        return userService.get(1);
+    public ResponseData<User> get(@RequestParam Integer id) {
+        return new ResponseData<>(userService.get(id));
     }
 
-    @GetMapping("/update")
-    public Object update() {
-        User user = userService.get(1);
-        user.setAge(60);
+    @EnableAuth
+    @PutMapping("/update")
+    public ResponseData<String> update(@RequestBody User user) {
         userService.update(user);
-        return true;
+        return new ResponseData<>("修改成功");
     }
 
+    @EnableAuth
     @DeleteMapping("/remove")
-    public Object remove(@RequestParam Integer id) {
+    public ResponseData<String> remove(@RequestParam Integer id) {
         userService.remove(id);
-        return true;
+        return new ResponseData<>("删除成功");
     }
 
+    // @EnableAuth
     @GetMapping("/list")
-    public Object list(HttpServletRequest request) {
+    public ResponseData<List<User>> list(HttpServletRequest request) {
         System.out.println("登录用户的ID->" + UserInfoUtil.getLoginUserId(request));
-        return userService.findAll();
+        return new ResponseData<>(userService.findAll());
     }
 
     @PostMapping("/login")
     public Object login(@RequestBody LoginParam loginParam) {
         Map<String, Object> result = new HashMap<>();
-        User user = userService.login(loginParam.getUsername(), loginParam.getPassword());
+        User user = userService.login(loginParam.getName(), loginParam.getPass());
         if (user != null) {
             result.put("status", true);
-            result.put("token", JWTUtils.getInstance().getToken(user.getId() + ""));
+            result.put("token", JWTUtils.getInstance().getToken(user.getId() + "", 10));
         } else {
             result.put("status", false);
         }

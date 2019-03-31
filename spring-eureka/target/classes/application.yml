@@ -1,0 +1,19 @@
+server:
+  port: 8760
+
+spring:
+  application:
+    name: MyEureka
+
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    appname: ${spring.application.name}
+    lease-expiration-duration-in-seconds: 60 #表示eureka server至上一次收到client的心跳之后，等待下一次心跳的超时时间，在这个时间内若没收到下一次心跳，则将移除该instance
+    prefer-ip-address: true
+  server:
+    enable-self-preservation: false #关闭自我保护,确保注册中心将不可用的实例删除
+    eviction-interval-timer-in-ms: 10000 # 清理间隔（单位毫秒，默认是60*1000）
+  client:
+    register-with-eureka: false #表示是否将自己注册到Eureka Server，默认为true。
+    fetch-registry: false #表示是否从Eureka Server获取注册信息，默认为true。

@@ -1,0 +1,32 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: Spring-Elasticsearch
+  data:
+    elasticsearch:
+      cluster-name: elasticsearch #默认即为elasticsearch
+      cluster-nodes: 192.168.160.143:9300 #配置es节点信息，逗号分隔，如果没有指定，则启动ClientNode
+  datasource:
+    druid:
+      url: jdbc:mysql://192.168.160.143:3307/test?characterEncoding=UTF8&useSSL=false&allowMultiQueries=true
+      driver-class-name: com.mysql.jdbc.Driver
+      username: root
+      password: 123456
+
+logging:
+  config: classpath:logback-spring.xml
+
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    appname: ${spring.application.name}
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka/
+
+mybatis:
+  type-aliases-package: com.jokey.bingo
+  mapper-locations: classpath:mapper/*.xml
