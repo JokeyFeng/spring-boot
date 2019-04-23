@@ -24,6 +24,7 @@
         <module>spring-second-killed</module>
         <module>spring-vue-server</module>
         <module>vue-client</module>
+        <module>spring-vertx</module>
     </modules>
 
     <name>spring-boot</name>
