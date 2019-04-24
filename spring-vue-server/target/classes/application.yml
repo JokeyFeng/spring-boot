@@ -2,13 +2,22 @@ server:
   port: 8890
 
 spring:
+#数据库配置
   datasource:
     druid:
       driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:mysql://127.0.0.1:3306/yinjihuan?characterEncoding=UTF8&useSSL=false&allowMultiQueries=true
+      url: jdbc:mysql://192.168.222.130:3306/yinjihuan?characterEncoding=UTF8&useSSL=false&allowMultiQueries=true
       username: root
       password: 123456
       max-active: 10
       min-idle: 5
   jpa:
     show-sql: true
+
+# 缓存配置
+  redis:
+    host: 192.168.222.130
+    port: 6379
+    database: 2
+    password: 123456
+    timeout: 5000

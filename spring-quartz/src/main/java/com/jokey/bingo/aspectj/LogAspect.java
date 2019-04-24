@@ -1,4 +1,4 @@
-package com.jokey.bingo.aspect;
+package com.jokey.bingo.aspectj;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;

@@ -40,7 +40,7 @@ public class ApiFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         response.setCharacterEncoding(StandardCharsets.UTF_8.name());
-        //预检请求不允许设置指定的content-type
+        //option预检请求不允许设置指定的content-type
         if (!HttpMethod.OPTIONS.matches(request.getMethod())) {
             //跨域响应需要设置Access-Control-Allow-Origin
             response.setContentType("application/json;charset=utf-8");

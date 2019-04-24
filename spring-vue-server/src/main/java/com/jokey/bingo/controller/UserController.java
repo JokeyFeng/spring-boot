@@ -1,6 +1,5 @@
 package com.jokey.bingo.controller;
 
-import com.jokey.bingo.auth.EnableAuth;
 import com.jokey.bingo.entity.LoginParam;
 import com.jokey.bingo.entity.ResponseData;
 import com.jokey.bingo.entity.User;
@@ -29,7 +28,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @EnableAuth
+  //  @EnableAuth
     @PostMapping("/save")
     public ResponseData<String> save(@RequestBody User user) {
         user.setStatus(true);
@@ -37,20 +36,20 @@ public class UserController {
         return new ResponseData<>("保存成功");
     }
 
-    @EnableAuth
+  //  @EnableAuth
     @GetMapping("/get")
     public ResponseData<User> get(@RequestParam Integer id) {
         return new ResponseData<>(userService.get(id));
     }
 
-    @EnableAuth
+  //  @EnableAuth
     @PutMapping("/update")
     public ResponseData<String> update(@RequestBody User user) {
         userService.update(user);
         return new ResponseData<>("修改成功");
     }
 
-    @EnableAuth
+  //  @EnableAuth
     @DeleteMapping("/remove")
     public ResponseData<String> remove(@RequestParam Integer id) {
         userService.remove(id);

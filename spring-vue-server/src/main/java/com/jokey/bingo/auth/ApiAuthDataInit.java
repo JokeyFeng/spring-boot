@@ -56,10 +56,7 @@ public class ApiAuthDataInit implements ApplicationContextAware {
             uri.append(method.getAnnotation(DeleteMapping.class).value()[0]);
         } else if (method.isAnnotationPresent(RequestMapping.class)) {
             uri.append(method.getAnnotation(RequestMapping.class).value()[0]);
-
         }
-
         return uri.toString();
-
     }
 }

@@ -32,7 +32,10 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void update(User user) {
-        usersRepository.save(user);
+        User old = this.get(user.getId());
+        old.setAge(user.getAge());
+        old.setName(user.getName());
+        usersRepository.save(old);
     }
 
     @Override
@@ -60,6 +63,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void remove(Integer id) {
-        usersRepository.deleteById(id);
+        //usersRepository.deleteById(id);
+        usersRepository.deleteUserById(id);
     }
 }
