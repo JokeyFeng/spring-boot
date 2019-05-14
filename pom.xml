@@ -25,6 +25,7 @@
         <module>spring-vue-server</module>
         <module>vue-client</module>
         <module>spring-vertx</module>
+        <module>spring-social</module>
     </modules>
 
     <name>spring-boot</name>
