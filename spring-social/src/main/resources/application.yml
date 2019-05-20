@@ -1,0 +1,8 @@
+server:
+  port: 80
+spring:
+  application:
+    name: spring-social
+
+appId: 101577019
+appSecret: 7035c7a920f44274c57e8eba38622b8e

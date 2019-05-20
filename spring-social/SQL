@@ -1,0 +1,27 @@
+CREATE TABLE `open_user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `openType` varchar(20) NOT NULL COMMENT '第三方类型。比如QQ、WebChat、github等',
+  `openId` varchar(50) NOT NULL COMMENT '代表用户唯一身份的ID',
+  `accessToken` varchar(100) NOT NULL COMMENT '调用接口需要用到的token，比如利用accessToken发表微博等，如果只是对接登录的话，这个其实没啥用',
+  `expiredTime` datetime DEFAULT NULL COMMENT '授权过期时间，第三方登录授权都是有过期时间的，比如3个月',
+  `nickname` varchar(50) NOT NULL COMMENT '昵称',
+  `avatar` varchar(100) NOT NULL COMMENT '头像',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='第三方用户登录表';
+
+
+create table UserConnection (
+    userId varchar(255) not null,
+    providerId varchar(255) not null,
+    providerUserId varchar(255),
+    rank int not null,
+    displayName varchar(255),
+    profileUrl varchar(512),
+    imageUrl varchar(512),
+    accessToken varchar(512) not null,
+    secret varchar(512),
+    refreshToken varchar(512),
+    expireTime bigint,
+    primary key (userId, providerId, providerUserId)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+create unique index UserConnectionRank on UserConnection(userId, providerId, rank);
