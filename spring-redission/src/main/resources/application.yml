@@ -1,0 +1,21 @@
+# common spring boot settings
+server:
+  port: 8843
+spring:
+  redis:
+    database: 2
+    host: 192.168.12.150
+    port: 6379
+    password: 123456
+    redisson:
+      config: classpath:redission-single.yml
+#spring.redis.ssl=
+#spring.redis.timeout=
+#spring.redis.cluster.nodes=
+#spring.redis.sentinel.master=
+#spring.redis.sentinel.nodes=
+
+# Redisson settings
+
+#path to redisson.yaml or redisson.json
+#spring.redis.redisson.config=classpath:redisson.yaml

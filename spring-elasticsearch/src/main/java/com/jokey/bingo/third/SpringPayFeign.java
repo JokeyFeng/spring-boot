@@ -44,5 +44,4 @@ public interface SpringPayFeign {
      */
     @PostMapping("/user/update")
     int updateUser(@RequestBody User user);
-
 }
