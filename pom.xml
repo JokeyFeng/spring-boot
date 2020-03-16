@@ -28,6 +28,7 @@
         <module>spring-social</module>
         <module>spring-jmh</module>
         <module>spring-redission</module>
+        <module>spring-disruptor</module>
     </modules>
 
     <name>spring-boot</name>
