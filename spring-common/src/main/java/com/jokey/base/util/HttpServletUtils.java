@@ -1,11 +1,5 @@
 package com.jokey.base.util;
 
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
-
-import javax.servlet.http.HttpServletRequest;
-import java.util.Objects;
-
 /**
  * @author JokeyFeng
  * date:2019/1/6
@@ -15,7 +9,7 @@ import java.util.Objects;
  */
 public abstract class HttpServletUtils {
 
-    public static HttpServletRequest getHttpServletRequest() {
+    /*public static HttpServletRequest getHttpServletRequest() {
         return ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder.getRequestAttributes())).getRequest();
-    }
+    }*/
 }
