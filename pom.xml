@@ -9,7 +9,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>spring-aop-websocket</module>
+        <module>spring-websocket</module>
         <module>spring-elasticsearch</module>
         <module>spring-eureka</module>
         <module>tx-lcn</module>
@@ -30,6 +30,9 @@
         <module>spring-redission</module>
         <module>spring-disruptor</module>
         <module>spring-poi</module>
+        <module>spring-algorithm</module>
+        <module>dubbo-java-spi</module>
+        <module>spring-rocketmq</module>
     </modules>
 
     <name>spring-boot</name>
@@ -56,21 +59,16 @@
     </properties>
     <dependencyManagement>
         <dependencies>
-            <dependency>
+            <!--<dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>${spring.cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency>
+            </dependency>-->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-aop</artifactId>
-                <version>2.0.4.RELEASE</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-cache</artifactId>
                 <version>2.0.4.RELEASE</version>
             </dependency>
             <dependency>
@@ -79,19 +77,9 @@
                 <version>2.0.4.RELEASE</version>
             </dependency>
             <dependency>
-                <groupId>org.springframework.session</groupId>
-                <artifactId>spring-session-core</artifactId>
-                <version>2.0.5.RELEASE</version>
-            </dependency>
-            <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-web</artifactId>
                 <version>2.0.4.RELEASE</version>
-            </dependency>
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>1.18.2</version>
             </dependency>
             <dependency>
                 <groupId>com.alibaba</groupId>
@@ -129,6 +117,21 @@
                 <version>${spring.social.version}</version>
             </dependency>
             <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-amqp</artifactId>
+                <version>2.0.4.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>2.0.4.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-websocket</artifactId>
+                <version>2.0.4.RELEASE</version>
+            </dependency>
+            <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
                 <version>${druid.starter.version}</version>
@@ -137,6 +140,12 @@
                 <groupId>org.mybatis.spring.boot</groupId>
                 <artifactId>mybatis-spring-boot-starter</artifactId>
                 <version>2.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>5.1.44</version>
+                <scope>runtime</scope>
             </dependency>
             <dependency>
                 <groupId>io.jsonwebtoken</groupId>
@@ -182,6 +191,12 @@
                 <groupId>org.redisson</groupId>
                 <artifactId>redisson-spring-boot-starter</artifactId>
                 <version>${redission.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.18.12</version>
+                <scope>provided</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>

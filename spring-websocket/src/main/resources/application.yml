@@ -1,0 +1,22 @@
+#消息队列
+#message:
+#  queue:
+#    type: rabbitmq
+## rabbit mq properties
+#rabbitmq:
+#  host: 192.168.160.142
+#  port: 5672
+#  username: guest
+#  password: guest
+spring:
+  rabbitmq:
+    host: www.rabbitmq.com
+    port: 5672
+    username: root
+    password: 123456
+    virtual-host: /
+    publisher-confirms: true
+    publisher-returns: true
+    listener:
+      direct:
+        acknowledge-mode: manual
