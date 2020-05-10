@@ -22,6 +22,7 @@ import java.util.concurrent.CopyOnWriteArraySet;
 public class MessageWebSocketHandler extends TextWebSocketHandler {
 
     private static Logger logger = LoggerFactory.getLogger(MessageWebSocketHandler.class);
+    
     private static ConcurrentHashMap<String, CopyOnWriteArraySet<WebSocketSession>> users = new ConcurrentHashMap<>();
 
     @Override

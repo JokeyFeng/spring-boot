@@ -20,3 +20,11 @@ spring:
     listener:
       direct:
         acknowledge-mode: manual
+        retry:
+          max-attempts: 3
+          initial-interval: 3000ms
+      simple:
+        concurrency: 5
+        prefetch: 5
+server:
+  port: 8080

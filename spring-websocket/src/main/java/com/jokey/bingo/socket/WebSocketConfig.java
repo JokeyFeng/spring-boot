@@ -21,7 +21,8 @@ public class WebSocketConfig implements WebSocketConfigurer {
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
         //配置webSocket路径
-        registry.addHandler(messageWebSocketHandler(), "/msg-websocket")
+       // registry.addHandler(messageWebSocketHandler(), "/msg-websocket")
+        registry.addHandler(messageWebSocketHandler(), "/user/")
                 .addInterceptors(new MyHandshakeInterceptor())
                 .setAllowedOrigins("*");
         //配置webSocket路径 支持前端使用socketJs

@@ -17,20 +17,20 @@ import java.io.IOException;
  */
 @Component
 public class RabbitMQListener {
-
-    @Autowired
-    private RabbitMQService mqService;
-
-    /**
-     * WebSocket推送监听器
-     *
-     * @param socketMsgEntity
-     * @param deliveryTag
-     * @param channel
-     */
-    @RabbitListener(queues = "websocket_msg_queue")
-    public void webSocketMsgListener(@Payload WebSocketMsgEntity socketMsgEntity,
-                                     @Header(AmqpHeaders.DELIVERY_TAG) long deliveryTag, Channel channel) throws IOException {
-        mqService.handleWebSocketMsg(socketMsgEntity, deliveryTag, channel);
-    }
+	
+	@Autowired
+	private RabbitMQService mqService;
+	
+	/**
+	 * WebSocket推送监听器
+	 *
+	 * @param socketMsgEntity
+	 * @param deliveryTag
+	 * @param channel
+	 */
+	@RabbitListener(queues = RabbitMQConfig.WEB_SOCKET_MSG_QUEUE)
+	public void webSocketMsgListener(@Payload WebSocketMsgEntity socketMsgEntity,
+									 @Header(AmqpHeaders.DELIVERY_TAG) long deliveryTag, Channel channel) throws IOException {
+		mqService.handleWebSocketMsg(socketMsgEntity, deliveryTag, channel);
+	}
 }

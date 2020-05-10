@@ -30,6 +30,6 @@ public class RabbitMessageQueue extends AbstractMessageQueue {
 	@Override
 	public void send(WebSocketMsgEntity msg) {
 		//没有指定exchange，则使用默认名为“”的exchange，binding名与queue名相同
-		rabbitTemplate.convertAndSend(RabbitMQConfig.WEB_SOCKET_MSG_EXCHANGE, RabbitMQConfig.WEB_SOCKET_MSG_ROUTING_KEY, JSON.toJSONString(msg));
+		rabbitTemplate.convertAndSend(RabbitMQConfig.WEB_SOCKET_MSG_DIRECT_EXCHANGE, RabbitMQConfig.WEB_SOCKET_MSG_ROUTING_KEY, JSON.toJSONString(msg));
 	}
 }

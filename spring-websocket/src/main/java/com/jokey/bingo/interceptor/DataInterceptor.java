@@ -20,12 +20,11 @@ public class DataInterceptor {
 
     @Autowired
     private MessageQueueService queueService;
-
-
+    
     /**
      * 维修工单切点
      */
-    @Pointcut("execution(* com.jokey.bingo.service(..))")
+    @Pointcut(value = "within(com.jokey.bingo.service..*)")
     private void repairMsg() {
 
     }
@@ -55,8 +54,7 @@ public class DataInterceptor {
      * @return
      */
     private WebSocketMsgEntity generateRepairMsgEntity(EquipmentRepair equipmentRepair) {
-        WebSocketMsgEntity webSocketMsgEntity = generateRepairMsgFromTasks(equipmentRepair);
-        return webSocketMsgEntity;
+        return generateRepairMsgFromTasks(equipmentRepair);
     }
 
     /**

@@ -1,9 +1,6 @@
 package com.jokey.bingo.mq;
 
-import org.springframework.amqp.core.Binding;
-import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.DirectExchange;
-import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,8 +10,8 @@ import java.io.IOException;
 /**
  * @author jokey
  */
-@Configuration
 @EnableRabbit
+@Configuration
 public class RabbitMQConfig {
 	
 	/*@Value("${rabbitmq.websocket.msg.queue}")
@@ -73,7 +70,12 @@ public class RabbitMQConfig {
 	/**
 	 * 消息交换机
 	 */
-	public static final String WEB_SOCKET_MSG_EXCHANGE = "websocket_msg_exchange";
+	public static final String WEB_SOCKET_MSG_DIRECT_EXCHANGE = "websocket_msg_direct_exchange";
+	
+	/**
+	 * 消息交换机
+	 */
+	public static final String WEB_SOCKET_MSG_FANOUT_EXCHANGE = "websocket_msg_fanout_exchange";
 	
 	/**
 	 * 消息路由键
@@ -90,9 +92,24 @@ public class RabbitMQConfig {
 		return new Queue(WEB_SOCKET_MSG_QUEUE);
 	}
 	
+	/**
+	 * 把消息路由到那些binding key与routing key完全匹配的Queue中。
+	 *
+	 * @return
+	 */
 	@Bean
 	public DirectExchange directExchange() {
-		return new DirectExchange(WEB_SOCKET_MSG_EXCHANGE);
+		return new DirectExchange(WEB_SOCKET_MSG_DIRECT_EXCHANGE);
+	}
+	
+	/**
+	 * 广播 把所有发送到该Exchange的消息路由到所有与它绑定的Queue中。
+	 *
+	 * @return
+	 */
+	@Bean
+	public FanoutExchange fanoutExchange() {
+		return new FanoutExchange(WEB_SOCKET_MSG_FANOUT_EXCHANGE);
 	}
 	
 	/**
@@ -101,7 +118,17 @@ public class RabbitMQConfig {
 	 * @return
 	 */
 	@Bean
-	public Binding msgBinding() {
+	public Binding directBinding() {
 		return BindingBuilder.bind(msgQueue()).to(directExchange()).with(WEB_SOCKET_MSG_ROUTING_KEY);
+	}
+	
+	/**
+	 * 消息队列绑定消息交换机
+	 *
+	 * @return
+	 */
+	@Bean
+	public Binding fanoutBinding() {
+		return BindingBuilder.bind(msgQueue()).to(fanoutExchange());
 	}
 }
