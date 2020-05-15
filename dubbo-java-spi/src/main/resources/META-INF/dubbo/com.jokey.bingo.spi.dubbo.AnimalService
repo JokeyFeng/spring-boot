@@ -1,2 +1,3 @@
 sheep=com.jokey.bingo.spi.dubbo.impl.Sheep
 pig=com.jokey.bingo.spi.dubbo.impl.Pig
+defaultAnimal=com.jokey.bingo.spi.dubbo.impl.DefaultAnimal

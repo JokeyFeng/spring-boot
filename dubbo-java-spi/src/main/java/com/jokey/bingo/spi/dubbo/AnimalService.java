@@ -9,7 +9,7 @@ import org.apache.dubbo.common.extension.SPI;
  * @package: com.jokey.bingo.spi.dubbo
  * @comment:
  */
-@SPI
+@SPI("defaultAnimal")
 public interface AnimalService {
 	
 	/**

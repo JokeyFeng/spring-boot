@@ -20,5 +20,6 @@ public class DubboSpiTest {
 		sheep.category();
 		AnimalService pig = loader.getExtension("pig");
 		pig.category();
+		loader.getAdaptiveExtension().category();
 	}
 }
