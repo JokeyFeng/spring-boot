@@ -46,7 +46,7 @@ public class LongEventMain {
 		//第三个参数为线程工厂
 		//第四个参数SINGLE(单个生产者)和MULTI(多个生产者)
 		//第五个参数定义一种关于生成和消费的策略
-		// Disruptor<LongEvent> disruptor = new Disruptor<>(factory, bufferSize, DaemonThreadFactory.INSTANCE);
+		// Disruptor<LongEvent> disruptor = new Disruptor<>(factorymethod, bufferSize, DaemonThreadFactory.INSTANCE);
 		Disruptor<LongEvent> disruptor = new Disruptor<>(factory, bufferSize, new DisruptorThreadFactory(), ProducerType.SINGLE, new SleepingWaitStrategy());
 		//JDK1.8的Lambdas写法
 		//Disruptor<LongEvent> disruptor = new Disruptor<>(LongEvent::new, bufferSize, new DisruptorThreadFactory(), ProducerType.SINGLE,new YieldingWaitStrategy());

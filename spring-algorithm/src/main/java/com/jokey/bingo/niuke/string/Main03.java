@@ -1,10 +1,10 @@
-package com.jokey.bingo.string;
+package com.jokey.bingo.niuke.string;
 
 /**
  * @author JokeyFeng
  * @date: 2020/4/12
  * @project: spring-boot
- * @package: com.jokey.bingo.string
+ * @package: com.jokey.bingo.niuke.string
  * @comment:
  */
 public class Main03 {

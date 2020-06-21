@@ -1,4 +1,4 @@
-package com.jokey.bingo.string;
+package com.jokey.bingo.niuke.string;
 
 import java.util.Scanner;
 
@@ -6,7 +6,7 @@ import java.util.Scanner;
  * @author JokeyFeng
  * @date: 2020/4/12
  * @project: spring-boot
- * @package: com.jokey.bingo.string
+ * @package: com.jokey.bingo.niuke.string
  * @comment:
  */
 public class Main05 {

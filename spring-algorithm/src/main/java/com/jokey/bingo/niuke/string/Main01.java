@@ -1,4 +1,4 @@
-package com.jokey.bingo.string;
+package com.jokey.bingo.niuke.string;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,7 +10,7 @@ import java.util.Scanner;
  * @author JokeyFeng
  * @date: 2020/4/12
  * @project: spring-boot
- * @package: com.jokey.bingo.string
+ * @package: com.jokey.bingo.niuke.string
  * @comment: 链接：https://ac.nowcoder.com/acm/contest/320/H
  * 来源：牛客网
  * <p>

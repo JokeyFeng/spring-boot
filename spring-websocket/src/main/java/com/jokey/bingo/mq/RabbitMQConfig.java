@@ -22,17 +22,17 @@ public class RabbitMQConfig {
 	
 	@Bean
 	public ConnectionFactory connectionFactory() throws IOException {
-		CachingConnectionFactory factory = new CachingConnectionFactory();
-		factory.setUsername(rabbitProperties.getUsername());
-		factory.setPassword(rabbitProperties.getPassword());
-		factory.setHost(rabbitProperties.getHost());
-		factory.setPort(Integer.valueOf(rabbitProperties.getPort()));
-		factory.setPublisherConfirms(true);
+		CachingConnectionFactory factorymethod = new CachingConnectionFactory();
+		factorymethod.setUsername(rabbitProperties.getUsername());
+		factorymethod.setPassword(rabbitProperties.getPassword());
+		factorymethod.setHost(rabbitProperties.getHost());
+		factorymethod.setPort(Integer.valueOf(rabbitProperties.getPort()));
+		factorymethod.setPublisherConfirms(true);
 		
 		//设置队列参数，是否持久化、队列TTL、队列消息TTL等
-		factory.createConnection().createChannel(false).queueDeclare(webSocketMsgQueue, true, false, false, null);
+		factorymethod.createConnection().createChannel(false).queueDeclare(webSocketMsgQueue, true, false, false, null);
 		
-		return factory;
+		return factorymethod;
 	}
 	
 	@Bean
@@ -54,12 +54,12 @@ public class RabbitMQConfig {
 	
 	@Bean
 	public SimpleRabbitListenerContainerFactory rabbitListenerContainerFactory() throws IOException {
-		SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
-		factory.setConnectionFactory(connectionFactory());
-		factory.setConcurrentConsumers(3);
-		factory.setMaxConcurrentConsumers(10);
-		factory.setAcknowledgeMode(AcknowledgeMode.MANUAL);
-		return factory;
+		SimpleRabbitListenerContainerFactory factorymethod = new SimpleRabbitListenerContainerFactory();
+		factorymethod.setConnectionFactory(connectionFactory());
+		factorymethod.setConcurrentConsumers(3);
+		factorymethod.setMaxConcurrentConsumers(10);
+		factorymethod.setAcknowledgeMode(AcknowledgeMode.MANUAL);
+		return factorymethod;
 	}*/
 	
 	/**
