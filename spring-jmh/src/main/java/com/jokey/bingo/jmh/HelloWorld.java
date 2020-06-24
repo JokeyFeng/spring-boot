@@ -17,8 +17,8 @@ import java.util.concurrent.TimeUnit;
  * created 2019/8/15 21:00
  * comment
  */
-@Warmup(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
-@Measurement(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
+@Warmup(iterations = 5, time = 1)
+@Measurement(iterations = 5, time = 1)
 public class HelloWorld {
     static class Demo {
         int id;
