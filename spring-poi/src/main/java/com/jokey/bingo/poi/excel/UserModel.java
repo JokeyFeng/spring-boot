@@ -1,4 +1,4 @@
-package com.jokey.bingo.poi;
+package com.jokey.bingo.poi.excel;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;

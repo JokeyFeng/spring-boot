@@ -1,4 +1,4 @@
-package com.jokey.bingo.poi;
+package com.jokey.bingo.poi.excel;
 
 import org.apache.poi.openxml4j.opc.OPCPackage;
 import org.apache.poi.xssf.eventusermodel.XSSFReader;
@@ -13,7 +13,7 @@ import java.io.InputStream;
 /**
  * @author Zhengjingfeng
  * @created 2020/4/8 9:33
- * @comment 事件模式：在poi下的eventusermodel包下，相对来说实现比较复杂，但是它处理速度快，占用内存少，可以用来处理海量的Excel数据。
+ * @comment 事件模式：在poi下的eventmodel包下，相对来说实现比较复杂，但是它处理速度快，占用内存少，可以用来处理海量的Excel数据。
  */
 public class EventModel {
 
