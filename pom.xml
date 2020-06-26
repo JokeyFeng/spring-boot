@@ -28,7 +28,6 @@
         <module>spring-jmh</module>
         <module>spring-redission</module>
         <module>spring-disruptor</module>
-        <module>spring-poi</module>
         <module>spring-algorithm</module>
         <module>dubbo-java-spi</module>
         <module>spring-rocketmq</module>
