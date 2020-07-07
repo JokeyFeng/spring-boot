@@ -5,7 +5,7 @@
 
     <groupId>com.jokey.bingo</groupId>
     <artifactId>spring-boot</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>2.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
@@ -33,6 +33,7 @@
         <module>dubbo-java-spi</module>
         <module>spring-rocketmq</module>
         <module>spring-thymeleaf</module>
+        <module>spring-aop</module>
     </modules>
 
     <name>spring-boot</name>
@@ -75,6 +76,21 @@
                 <version>2.0.4.RELEASE</version>
             </dependency>
             <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-amqp</artifactId>
+                <version>2.0.4.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>2.0.4.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-websocket</artifactId>
+                <version>2.0.4.RELEASE</version>
+            </dependency>
+            <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
@@ -108,21 +124,6 @@
                 <groupId>org.springframework.social</groupId>
                 <artifactId>spring-social-web</artifactId>
                 <version>${spring.social.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-amqp</artifactId>
-                <version>2.0.4.RELEASE</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-data-redis</artifactId>
-                <version>2.0.4.RELEASE</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-websocket</artifactId>
-                <version>2.0.4.RELEASE</version>
             </dependency>
             <dependency>
                 <groupId>com.alibaba</groupId>
@@ -193,4 +194,18 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <plugins>
+            <!--管理父子模块的版本 mvn -N versions:update-child-modules-->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>2.3</version>
+                <configuration>
+                    <generateBackupPoms>false</generateBackupPoms>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
