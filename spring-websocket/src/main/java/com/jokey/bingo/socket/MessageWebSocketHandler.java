@@ -2,7 +2,6 @@ package com.jokey.bingo.socket;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.socket.CloseStatus;
@@ -18,7 +17,7 @@ import java.util.concurrent.CopyOnWriteArraySet;
 /**
  * @author jokey
  */
-@Component
+//@Component
 public class MessageWebSocketHandler extends TextWebSocketHandler {
 
     private static Logger logger = LoggerFactory.getLogger(MessageWebSocketHandler.class);
@@ -32,7 +31,7 @@ public class MessageWebSocketHandler extends TextWebSocketHandler {
         logger.info("session.getId:" + session.getId());
         logger.info("session.getLocalAddress:" + session.getLocalAddress().toString());
         logger.info("userId:" + userId);
-        //websocket连接后记录连接信息
+        //webSocket连接后记录连接信息
         if (users.keySet().contains(userId)) {
             CopyOnWriteArraySet<WebSocketSession> webSocketSessions = users.get(userId);
             webSocketSessions.add(session);

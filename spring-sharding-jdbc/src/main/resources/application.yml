@@ -18,25 +18,25 @@ spring:
       tables:
         t_order:
           actual-data-nodes: ds$->{0..1}.t_order$->{0..1}
-          ##Ö¸¶¨·Ö¿â¹æÔò
+          ##åˆ†åº“ç²—ç•¥
           database-strategy:
-            ##ĞĞ±í´ïÊ½
+            ##è¡Œè¡¨è¾¾å¼
             inline:
               sharding-column: user_id
               algorithm-expression: ds$->{user_id % 2}
-          ##Ö¸¶¨·Ö±í¹æÔò
+          ##åˆ†è¡¨ç­–ç•¥
           table-strategy:
             inline:
               sharding-column: order_id
               algorithm-expression: t_order$->{order_id % 2}
-          ## Éú³É·Ö²¼Ê½Ö÷¼ü
+          ## ä¸»é”®ç”Ÿæˆç­–ç•¥
           key-generator:
             column: order_id
             type: SNOWFLAKE
 
         t_order_item:
           actual-data-nodes: ds$->{0..1}.t_order_item$->{0..1}
-          ##Í¨¹ıhint·½Ê½ÖÆ¶¨·Ö¿â¹æÔò(ÒòÎªitem±íÃ»ÓĞuser_id×Ö¶Î£¬Ö»ÄÜÍ¨¹ıhint²ßÂÔ×Ô¶¨Òå¹æÔò)
+          ## hintè¡¨è¾¾å¼å¼ºåˆ¶åˆ†ç‰‡ï¼Œå› ä¸ºorder_itemè¡¨é‡Œæ²¡æœ‰user_idå­—æ®µï¼Œéœ€è¦è‡ªå®šä¹‰åˆ†ç‰‡ç®—æ³•
           database-strategy:
             hint:
               algorithmClassName: com.jokey.sharding.config.HintSharding
@@ -44,16 +44,16 @@ spring:
             inline:
               sharding-column: order_id
               algorithm-expression: t_order_item$->{order_id % 2}
-          ## Éú³É·Ö²¼Ê½Ö÷¼ü
+          ## ä¸»é”®ç”Ÿæˆç­–ç•¥
           key-generator:
             column: item_id
             type: SNOWFLAKE
 
-      ## °ó¶¨Ö÷±íÓë×Ó±í£¬±ÜÃâ¹ØÁª²éÑ¯µ¼ÖÂµÄÈ«Êı¾İÔ´Â·ÓÉ
+      ## å…³ç³»è¡¨ç»‘å®š
       binding-tables: t_order,t_order_item
-      ## ÅäÖÃ¹ã²¥±í£ºÒÔ¹ã²¥µÄĞÎÊ½±£´æ£¨Èç¹ûÖ»Éæ¼°²éÑ¯µÄ»°¿ÉÒÔ²»ÅäÖÃ£¬»áËæ»úÈ¡Ò»¸öÊı¾İÔ´£©
+      ## å¹¿æ’­è¡¨é…ç½®
       broadcast-tables: t_config
-    ## ´òÓ¡sql
+    ## æ‰“å°sql
     props:
       sql:
         show: true

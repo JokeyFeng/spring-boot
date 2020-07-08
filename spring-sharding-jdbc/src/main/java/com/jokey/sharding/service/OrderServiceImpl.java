@@ -51,6 +51,11 @@ public class OrderServiceImpl implements OrderService {
 	}
 	
 	@Override
+	public List<Order> selectByUserList(List<Long> userList) {
+		return orderMapper.selectOrderByUserList(userList);
+	}
+	
+	@Override
 	public List<Order> selectOrderJoinOrderItem(Long userId, Long orderId) {
 		try (HintManager hintManager = HintManager.getInstance()) {
 			hintManager.addDatabaseShardingValue("t_order_item", userId);

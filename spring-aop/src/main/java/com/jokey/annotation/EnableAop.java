@@ -1,6 +1,9 @@
 package com.jokey.annotation;
 
 
+import com.jokey.selector.CustomizedAopImportSelector;
+import org.springframework.context.annotation.Import;
+
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
@@ -10,5 +13,6 @@ import java.lang.annotation.RetentionPolicy;
  * @comment
  */
 @Retention(RetentionPolicy.RUNTIME)
+@Import(CustomizedAopImportSelector.class)
 public @interface EnableAop {
 }

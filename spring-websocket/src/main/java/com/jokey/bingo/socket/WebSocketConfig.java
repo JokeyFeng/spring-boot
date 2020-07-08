@@ -15,26 +15,31 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 @Configuration
 @EnableWebSocket
 public class WebSocketConfig implements WebSocketConfigurer {
-    
-    private static Logger logger = LoggerFactory.getLogger(WebSocketConfig.class);
+	
+	private static Logger logger = LoggerFactory.getLogger(WebSocketConfig.class);
 
-    @Override
-    public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        //配置webSocket路径
-       // registry.addHandler(messageWebSocketHandler(), "/msg-websocket")
-        registry.addHandler(messageWebSocketHandler(), "/user/")
-                .addInterceptors(new MyHandshakeInterceptor())
-                .setAllowedOrigins("*");
-        //配置webSocket路径 支持前端使用socketJs
-        registry.addHandler(messageWebSocketHandler(), "/sockjs/msg-websocket")
-                .setAllowedOrigins("*")
-                .addInterceptors(new MyHandshakeInterceptor())
-                .withSockJS();
-    }
-
-    @Bean
-    public MessageWebSocketHandler messageWebSocketHandler() {
-        logger.info("......创建MessageWebSocketHandler......");
-        return new MessageWebSocketHandler();
-    }
+   /* @Autowired
+    private MessageWebSocketHandler messageWebSocketHandler;*/
+	
+	@Override
+	public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
+		//配置webSocket路径
+		registry.addHandler(messageWebSocketHandler(), "/msg-websocket")
+				.addHandler(messageWebSocketHandler(), "/user/")
+				.addInterceptors(new MyHandshakeInterceptor())
+				.setAllowedOrigins("*");
+		//配置webSocket路径 支持前端使用socketJs
+		//  registry.addHandler(messageWebSocketHandler, "/sockjs/msg-websocket")
+		registry.addHandler(messageWebSocketHandler(), "/sockjs/msg-websocket")
+				
+				.setAllowedOrigins("*")
+				.addInterceptors(new MyHandshakeInterceptor())
+				.withSockJS();
+	}
+	
+	@Bean
+	public MessageWebSocketHandler messageWebSocketHandler() {
+		logger.info("......创建MessageWebSocketHandler......");
+		return new MessageWebSocketHandler();
+	}
 }

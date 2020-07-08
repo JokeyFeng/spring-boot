@@ -10,4 +10,6 @@ import java.lang.annotation.RetentionPolicy;
  */
 @Retention(RetentionPolicy.RUNTIME)
 public @interface BeforeMe {
+	
+	String value() default "";
 }

@@ -40,6 +40,14 @@ public interface OrderService {
 	Order selectByUserId(Long userId);
 	
 	/**
+	 * 根据UserId范围查询
+	 *
+	 * @param userList
+	 * @return
+	 */
+	List<Order> selectByUserList(List<Long> userList);
+	
+	/**
 	 * 关联用户ID查询订单
 	 *
 	 * @param userId

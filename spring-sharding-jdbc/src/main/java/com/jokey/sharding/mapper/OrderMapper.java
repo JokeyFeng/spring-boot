@@ -63,4 +63,17 @@ public interface OrderMapper {
 			"from t_order o inner join t_config c on o.config_id = c.id " +
 			"where o.user_id =#{userId} and o.order_id =#{orderId}")
 	List<Order> selectOrderJoinConfig(@Param("userId") Long userId, @Param("orderId") Long orderId);
+	
+	/**
+	 * userId范围查询
+	 *
+	 * @param userList
+	 * @return
+	 */
+	@Select({"<script>" +
+			"select order_id orderId, user_id userId, config_id configId, remark," +
+			"create_time createTime, last_modify_time lastModifyTime from t_order  where user_id in" +
+			"<foreach collection='userList' item='userId' open='(' separator=',' close=')'> #{userId} </foreach>" +
+			"</script>"})
+	List<Order> selectOrderByUserList(@Param("userList") List<Long> userList);
 }

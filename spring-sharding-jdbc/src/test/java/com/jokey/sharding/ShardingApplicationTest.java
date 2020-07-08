@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
 
 @SpringBootTest
@@ -118,6 +119,13 @@ public class ShardingApplicationTest {
 		// 未指定子表分片规则：导致子表的全路由
 		List<Order> o2 = orderService.selectOrderJoinOrderItemNoSharding(1002L, 10002L);
 		System.out.println(o2);
+	}
+	
+	@Test
+	public void testSelectByUserList() {
+		List<Long> userList = Arrays.asList(1002L, 1003L, 1004L, 1005L, 1006L);
+		List<Order> orderList = orderService.selectByUserList(userList);
+		System.out.println(orderList);
 	}
 	
 }

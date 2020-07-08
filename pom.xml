@@ -22,6 +22,7 @@
         <module>spring-elastic-job</module>
         <module>spring-ldap</module>
         <module>spring-second-killed</module>
+        <module>spring-sharding-jdbc</module>
         <module>spring-vue-server</module>
         <module>spring-vertx</module>
         <module>spring-social</module>
