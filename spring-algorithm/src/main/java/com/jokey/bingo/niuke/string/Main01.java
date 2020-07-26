@@ -35,7 +35,8 @@ public class Main01 {
 	
 	public static void main(String[] args) throws IOException {
 		//Main01.normal();
-		Main01.bufferStream();
+		//Main01.bufferStream();
+		System.out.println("a".toUpperCase());
 	}
 	
 	/**
