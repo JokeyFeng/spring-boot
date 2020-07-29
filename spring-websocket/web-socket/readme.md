@@ -22,15 +22,17 @@
 方案一 Spring WebSocket
 </a> 
 
+
 <a href="https://www.cnblogs.com/xdp-gacl/p/5193279.html" target="_blank">
 方案二 Tomcat WebSocket
-</a> 
+</a>
+
 
 <a href="https://netty.io/news/2012/11/15/websocket-enhancement.html" target="_blank">
 方案三 Netty WebSocket
 </a>
 
-目前艿艿手头有个涉及到 IM 即使通讯的项目，采用的是方案三。
+目前艿艿手头有个涉及到IM即时通讯的项目，采用的是方案三。
 主要原因是，我们对 Netty 框架的实战、原理与源码，都相对熟悉一些。所以就考虑了它。
 并且，除了需要支持 WebSocket 协议，我们还想提供原生的 Socket 协议。
 

@@ -16,7 +16,6 @@ import javax.websocket.Session;
 @Component
 public class SendToAllHandler implements MessageHandler<SendToAllRequest> {
 
-
     @Override
     public void execute(Session session, SendToAllRequest message) {
         // 创建转发的消息
