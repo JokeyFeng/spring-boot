@@ -53,10 +53,10 @@ public class Request {
 
     public String toMsg() {
 //        JSONObject jsonObject = new JSONObject();
-//        jsonObject.put("stactic", getAction());
+//        jsonObject.put("templates", getAction());
 //        jsonObject.put("k", getKey());
 //        jsonObject.put("p", getParams());
-        String json = "{\"stactic\":\"" + getAction() + "\",\"k\":\"" + getKey() + "\",\"p\":" + getParams() + "}";
+        String json = "{\"templates\":\"" + getAction() + "\",\"k\":\"" + getKey() + "\",\"p\":" + getParams() + "}";
         return json;
     }
 }

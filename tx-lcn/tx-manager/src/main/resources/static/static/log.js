@@ -10,7 +10,7 @@ var init = function () {
             var v = res[p];
             var name = v['name'].split(':')[1];
             var tr = '<tr>' +
-                '<td><stactic class="model-name" href="#">' + name + '</stactic></td>' +
+                '<td><templates class="model-name" href="#">' + name + '</templates></td>' +
                 '<td><span>' + v['count'] + '</span></td>' +
                 '</tr>';
             list.append(tr);
@@ -35,7 +35,7 @@ $(document).on("click", ".model-name", function () {
         for (var p in res) {
             var data = res[p];
             var name = data.split(":")[0];
-            var tr = '<tr><td><stactic class="model-time" data-data="' + data + '" href="#">' + name + '</stactic></td></tr>';
+            var tr = '<tr><td><templates class="model-time" data-data="' + data + '" href="#">' + name + '</templates></td></tr>';
             list.append(tr);
         }
 

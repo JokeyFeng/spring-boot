@@ -39,7 +39,7 @@ public class TransactionHandler extends ChannelInboundHandlerAdapter {
 
         //心跳包
         JSONObject heartJo = new JSONObject();
-        heartJo.put("stactic", "h");
+        heartJo.put("templates", "h");
         heartJo.put("k", "h");
         heartJo.put("p", "{}");
         heartJson = heartJo.toString();

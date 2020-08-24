@@ -22,7 +22,7 @@ import org.slf4j.LoggerFactory;
 import java.util.concurrent.Executor;
 
 /**
- * Handles stactic server-side channel.
+ * Handles templates server-side channel.
  *
  * @author yiheni
  */
@@ -52,7 +52,7 @@ public class TxCoreServerHandler extends ChannelInboundHandlerAdapter {
     private void service(String json, ChannelHandlerContext ctx) {
         if (StringUtils.isNotEmpty(json)) {
             JSONObject jsonObject = JSONObject.parseObject(json);
-            String action = jsonObject.getString("stactic");
+            String action = jsonObject.getString("templates");
             String key = jsonObject.getString("k");
             JSONObject params = JSONObject.parseObject(jsonObject.getString("p"));
             String channelAddress = ctx.channel().remoteAddress().toString();

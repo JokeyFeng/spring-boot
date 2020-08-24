@@ -12,7 +12,7 @@
     <artifactId>web-socket</artifactId>
     <description>发送普通的socket消息</description>
 
-    <dependencies>
+   <!-- <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-websocket</artifactId>
@@ -21,7 +21,7 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
         </dependency>
-    </dependencies>
+    </dependencies>-->
     <build>
         <plugins>
             <plugin>

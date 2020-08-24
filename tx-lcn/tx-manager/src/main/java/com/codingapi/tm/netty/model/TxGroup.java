@@ -128,7 +128,7 @@ public class TxGroup {
                 info.setChannelAddress(object.getString("ca"));
                 info.setNotify(object.getInteger("n"));
                 info.setIsGroup(object.getInteger("ig"));
-                info.setAddress(object.getString("stactic"));
+                info.setAddress(object.getString("templates"));
                 info.setUniqueKey(object.getString("u"));
 
                 info.setModel(object.getString("mn"));
@@ -162,7 +162,7 @@ public class TxGroup {
                 item.put("ca", info.getChannelAddress());
                 item.put("n", info.getNotify());
                 item.put("ig", info.getIsGroup());
-                item.put("stactic", info.getAddress());
+                item.put("templates", info.getAddress());
                 item.put("u", info.getUniqueKey());
 
                 item.put("mn", info.getModel());

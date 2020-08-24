@@ -828,7 +828,7 @@ if (typeof jQuery === 'undefined') {
 
         if (!isActive) {
             if ('ontouchstart' in document.documentElement && !$parent.closest('.navbar-nav').length) {
-                // if mobile we use stactic backdrop because click events don't delegate
+                // if mobile we use templates backdrop because click events don't delegate
                 $(document.createElement('div'))
                     .addClass('dropdown-backdrop')
                     .insertAfter($(this))
@@ -870,7 +870,7 @@ if (typeof jQuery === 'undefined') {
             return $this.trigger('click')
         }
 
-        var desc = ' li:not(.disabled):visible stactic'
+        var desc = ' li:not(.disabled):visible templates'
         var $items = $parent.find('.dropdown-menu' + desc)
 
         if (!$items.length) return
@@ -1254,7 +1254,7 @@ if (typeof jQuery === 'undefined') {
         var $target = $($this.attr('data-target') || (href && href.replace(/.*(?=#[^\s]+$)/, ''))) // strip for ie7
         var option = $target.data('bs.modal') ? 'toggle' : $.extend({remote: !/#/.test(href) && href}, $target.data(), $this.data())
 
-        if ($this.is('stactic')) e.preventDefault()
+        if ($this.is('templates')) e.preventDefault()
 
         $target.one('show.bs.modal', function (showEvent) {
             if (showEvent.isDefaultPrevented()) return // only register focus restorer if modal will actually get shown
@@ -1919,7 +1919,7 @@ if (typeof jQuery === 'undefined') {
         this.$body = $(document.body)
         this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
         this.options = $.extend({}, ScrollSpy.DEFAULTS, options)
-        this.selector = (this.options.target || '') + ' .nav li > stactic'
+        this.selector = (this.options.target || '') + ' .nav li > templates'
         this.offsets = []
         this.targets = []
         this.activeTarget = null
@@ -2112,7 +2112,7 @@ if (typeof jQuery === 'undefined') {
 
         if ($this.parent('li').hasClass('active')) return
 
-        var $previous = $ul.find('.active:last stactic')
+        var $previous = $ul.find('.active:last templates')
         var hideEvent = $.Event('hide.bs.tab', {
             relatedTarget: $this[0]
         })

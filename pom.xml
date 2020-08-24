@@ -35,6 +35,9 @@
         <module>spring-rocketmq</module>
         <module>spring-thymeleaf</module>
         <module>spring-aop</module>
+        <module>spring-drools</module>
+        <module>spring-event</module>
+        <module>spring-axon</module>
     </modules>
 
     <name>spring-boot</name>

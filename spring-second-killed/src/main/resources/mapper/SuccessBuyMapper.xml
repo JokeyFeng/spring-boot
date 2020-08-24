@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jokey.bingo.mapper.SuccessBuyMapper">
+    <resultMap id="baseResult" type="com.jokey.bingo.entity.SuccessBuy">
+        <id column="buy_id" property="buyId"/>
+        <result column="user_phone" property="userPhone"/>
+        <result column="state" property="state"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+    <insert id="insertSuccessKilled">
+        INSERT IGNORE INTO success_buy(buy_id,user_phone)
+        VALUES (#{buyId},#{userPhone})
+    </insert>
+    <select id="queryByIdWithSecKill" resultMap="baseResult">
+        <!--告诉mybatis把结果映射到SuccessKilled，同时映射seckill属性-->
+        SELECT
+        sk.buy_id,
+        sk.user_phone,
+        sk.create_time,
+        sk.state,
+        s.buy_id "panic_buy.buy_id",
+        s.name "panic_buy.name",
+        s.number "panic_buy.number",
+        s.start_time "panic_buy.start_time",
+        s.end_time "panic_buy.end_time",
+        s.create_time "panic_buy.create_time"
+        FROM
+        success_buy sk
+        INNER JOIN panic_buy s ON s.buy_id = sk.buy_id
+        WHERE
+        sk.buy_id = #{buyId}
+    </select>
+
+</mapper>

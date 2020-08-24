@@ -24,7 +24,7 @@ public class Exposer {
     /**
      * ID
      */
-    private Long seckillId;
+    private Long buyId;
 
     /**
      * 当前系统时间：毫秒
@@ -41,22 +41,22 @@ public class Exposer {
      */
     private Long end;
 
-    public Exposer(Boolean exposed, Long seckillId) {
+    public Exposer(Boolean exposed, Long buyId) {
         this.exposed = exposed;
-        this.seckillId = seckillId;
+        this.buyId = buyId;
     }
 
-    public Exposer(Boolean exposed, Long seckillId, Long now, Long start, Long end) {
+    public Exposer(Boolean exposed, Long buyId, Long now, Long start, Long end) {
         this.exposed = exposed;
-        this.seckillId = seckillId;
+        this.buyId = buyId;
         this.now = now;
         this.start = start;
         this.end = end;
     }
 
-    public Exposer(Boolean exposed, String md5, Long seckillId) {
+    public Exposer(Boolean exposed, String md5, Long buyId) {
         this.exposed = exposed;
         this.md5 = md5;
-        this.seckillId = seckillId;
+        this.buyId = buyId;
     }
 }

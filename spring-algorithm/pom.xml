@@ -9,7 +9,6 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.jokey.bingo</groupId>
     <artifactId>spring-algorithm</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 

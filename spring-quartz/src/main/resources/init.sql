@@ -4,7 +4,7 @@
 #
 #
 # By: Ron Cordell - roncordell
-#  I didn't see this anywhere, so I thought I'd post it here. This is the script from Quartz to create the tables in stactic MySQL database, modified to use INNODB instead of MYISAM.
+#  I didn't see this anywhere, so I thought I'd post it here. This is the script from Quartz to create the tables in templates MySQL database, modified to use INNODB instead of MYISAM.
 */
 
 DROP TABLE IF EXISTS QRTZ_FIRED_TRIGGERS;

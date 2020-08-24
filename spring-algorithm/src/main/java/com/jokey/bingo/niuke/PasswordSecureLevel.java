@@ -152,7 +152,6 @@ public class PasswordSecureLevel {
 	 */
 	public static int letterSecure(String password) {
 		int upperLetter = 0, lowerLetter = 0;
-		
 		for (int i = 0; i < password.length(); i++) {
 			String chart = String.valueOf(password.charAt(i));
 			if (chart.matches("[A~Z]")) {

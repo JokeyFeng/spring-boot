@@ -72,7 +72,7 @@ public class NettyControlServiceImpl implements NettyControlService {
 
         if (StringUtils.isNotEmpty(json)) {
             JSONObject resObj = JSONObject.parseObject(json);
-            if (resObj.containsKey("stactic")) {
+            if (resObj.containsKey("templates")) {
                 // tm发送数据给tx模块的处理指令
                 logger.info("receive cmd -> {}", json);
                 transactionControlService.notifyTransactionMsg(ctx,resObj,json);

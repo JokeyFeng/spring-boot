@@ -32,7 +32,7 @@ public abstract class RandomStringUtil {
      * // 可以根据自己需求来删减下面的代码，不要要的类型可以删掉
      * <p>
      * // type=0：纯数字(0-9)
-     * // type=1：全小写字母(stactic-z)
+     * // type=1：全小写字母(templates-z)
      * // type=2：全大写字母(A-Z)
      * // type=3: 数字+小写字母
      * // type=4: 数字+大写字母
