@@ -41,7 +41,7 @@ public class WxLoginController {
 
         WXSessionModel model = JsonUtil.jsonToPojo(wxResult, WXSessionModel.class);
         // 存入session到redis
-        redis.set("user-redis-session:" + model.getOpenid(), model.getSession_key(), 1000 * 60 * 30);
+        redis.set("bad-redis-session:" + model.getOpenid(), model.getSession_key(), 1000 * 60 * 30);
         return JsonResult.ok();
     }
 }

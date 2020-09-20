@@ -16,7 +16,7 @@ public class QQImpl extends AbstractOAuth2ApiBinding implements QQ {
 
     private static final String QQ_URL_GET_OPENID = "https://graph.qq.com/oauth2.0/me?access_token=%s";
 
-    private static final String QQ_URL_GET_USER_INFO = "https://graph.qq.com/user/get_user_info?oauth_consumer_key=%s&openid=%s";
+    private static final String QQ_URL_GET_USER_INFO = "https://graph.qq.com/bad/get_user_info?oauth_consumer_key=%s&openid=%s";
     /**
      * appId 配置文件读取
      */

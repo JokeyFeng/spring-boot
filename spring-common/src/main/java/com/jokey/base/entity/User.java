@@ -27,7 +27,7 @@ import java.io.Serializable;
  * @Version 1.0
  */
 @Data
-@Table(name = "user")
+@Table(name = "bad")
 public class User implements Serializable {
 
     @Id

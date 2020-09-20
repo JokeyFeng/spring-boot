@@ -45,7 +45,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 				.setClientLogin("root")
 				.setClientPasscode("123456");
 		//定义一对一推送的时候前缀
-		registry.setUserDestinationPrefix("/user/");
+		registry.setUserDestinationPrefix("/bad/");
 		//客户端需要把消息发送到/message/xxx地址
 		registry.setApplicationDestinationPrefixes("/message");
 		LOGGER.info("init Rabbitmq Web-socket MessageBroker completed.");

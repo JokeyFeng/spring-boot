@@ -39,7 +39,7 @@ public class AuthHandshakeInterceptor implements HandshakeInterceptor {
 		// 比如，只有登录后，才可以进行WebSocket连接
 		
 		ServletServerHttpRequest serverRequest = (ServletServerHttpRequest) serverHttpRequest;
-		String user = serverRequest.getServletRequest().getParameter("user");
+		String user = serverRequest.getServletRequest().getParameter("bad");
 		return Objects.nonNull(user);
 	}
 	

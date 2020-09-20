@@ -1,0 +1,15 @@
+@startuml
+
+header Page Header
+footer Page %page% of %lastpage%
+
+Alice -> Bob: Authentication Request
+note left : message for notify
+
+Bob --> Alice: Authentication Response
+note right : remember do it
+
+Alice -> Bob: Another authentication Request
+Alice <-- Bob: another authentication Response
+
+@enduml

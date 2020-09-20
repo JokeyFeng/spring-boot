@@ -1,7 +1,7 @@
 package com.jokey.bingo.mapper;
 
 
-import com.jokey.bingo.SecondKillApplication;
+import com.jokey.bingo.PanicBuyApplication;
 import com.jokey.bingo.entity.PanicBuyEntity;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = SecondKillApplication.class)
+@SpringBootTest(classes = PanicBuyApplication.class)
 public class PanicBuyEntityMapperTest {
 
     @Resource

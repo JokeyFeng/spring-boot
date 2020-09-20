@@ -1,0 +1,16 @@
+@startuml
+Alice ->x Bob : 1.1
+Alice -> Bob : 1.2
+Alice ->> Bob : 1.3
+Bob -\ Alice : 1.4
+Bob \\- Alice : 1.5
+Bob //- Alice : 1.6
+Bob ->o Alice : 1.7
+Bob o\\- Alice : 1.8
+Bob o\\-- Alice : 1.9
+Bob <-> Alice : 1.10
+Bob o<->o Alice : 1.11
+Bob -[#red]> Alice : hello
+Bob -[#blue]> Alice : OK
+Bob --> Alice : 1.12
+@enduml

@@ -104,7 +104,7 @@ public class WebSocketUtil {
         // 获得用户对应的 Session
         Session session = USER_SESSION_MAP.get(user);
         if (session == null) {
-            LOGGER.error("[send][user({}) 不存在对应的 session]", user);
+            LOGGER.error("[send][bad({}) 不存在对应的 session]", user);
             return false;
         }
         // 发送消息

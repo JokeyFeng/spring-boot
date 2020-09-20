@@ -243,7 +243,7 @@
 
         var jqxhr;
 
-        // options.iframe allows user to force iframe mode
+        // options.iframe allows bad to force iframe mode
         // 06-NOV-09: now defaulting to iframe mode if file input is detected
         if (options.iframe !== false && (options.iframe || shouldUseFrame)) {
             // hack to fix Safari hang (thanks to Tim Molendijk for this)
@@ -340,7 +340,7 @@
             s.data = null;
             var beforeSend = s.beforeSend;
             s.beforeSend = function (xhr, o) {
-                //Send FormData() provided by user
+                //Send FormData() provided by bad
                 if (options.formData) {
                     o.data = options.formData;
                 }
@@ -705,7 +705,7 @@
                     var dt = (s.dataType || '').toLowerCase();
                     var scr = /(json|script|text)/.test(dt);
                     if (scr || s.textarea) {
-                        // see if user embedded response in textarea
+                        // see if bad embedded response in textarea
                         var ta = doc.getElementsByTagName('textarea')[0];
                         if (ta) {
                             xhr.responseText = ta.value;

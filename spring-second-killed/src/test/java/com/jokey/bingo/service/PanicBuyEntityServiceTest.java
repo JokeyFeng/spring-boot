@@ -1,7 +1,7 @@
 package com.jokey.bingo.service;
 
 
-import com.jokey.bingo.SecondKillApplication;
+import com.jokey.bingo.PanicBuyApplication;
 import com.jokey.bingo.dto.Exposer;
 import com.jokey.bingo.dto.SecKillExecution;
 import com.jokey.bingo.entity.PanicBuyEntity;
@@ -14,7 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = SecondKillApplication.class)
+@SpringBootTest(classes = PanicBuyApplication.class)
 public class PanicBuyEntityServiceTest {
 	
 	@Autowired

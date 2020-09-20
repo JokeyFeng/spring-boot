@@ -11,8 +11,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * comment:
  */
 @SpringBootApplication
-public class SecondKillApplication {
+public class PanicBuyApplication {
     public static void main(String[] args) {
-        SpringApplication.run(SecondKillApplication.class, args);
+        SpringApplication.run(PanicBuyApplication.class, args);
     }
 }

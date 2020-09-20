@@ -38,6 +38,7 @@
         <module>spring-drools</module>
         <module>spring-event</module>
         <module>spring-axon</module>
+        <module>spring-state-machine</module>
     </modules>
 
     <name>spring-boot</name>

@@ -22,7 +22,7 @@ import java.util.Map;
  * comment:
  */
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/bad")
 public class UserController {
 
     @Autowired
